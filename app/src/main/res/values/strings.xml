@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Cau Long</string>
+    <string name="hello_fragment">Hello fragment!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>"
+    <string name="open_nav">open_nav</string>
+    <string name="close_nav">close_nav</string>
+    <string name="about_us">Về chúng tôi</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="settings">Cài đặt</string>
+    <string name="share">Chia sẻ</string>
+    <string name="home">Trang chủ</string>
+    <string name="library">Library</string>
+    <string name="shorts">Shorts</string>
+    <string name="subscriptions">Subscriptions</string>
+</resources>

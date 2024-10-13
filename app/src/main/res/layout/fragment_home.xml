@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- Nút đặt sân cầu lông -->
+    <Button
+        android:id="@+id/btn_book_court"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đặt Sân Cầu Lông"
+        android:layout_marginTop="16dp"
+      />
+
+    <!-- Nút đặt đồ ăn -->
+    <Button
+        android:id="@+id/btn_order_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đặt Đồ Ăn"
+        android:layout_marginTop="16dp"
+       />
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+
+</FrameLayout>
+</LinearLayout>
