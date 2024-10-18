@@ -1,6 +1,7 @@
 package com.example.caulong; // Thay đổi theo package của bạn
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,108 +19,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 public class Setup_yard extends AppCompatActivity {
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.fragment_setup_yard); // Thay activity_main bằng tên layout chính của bạn
 
-    private EditText editTextDate;
-    private ImageView ivCalendarIcon;
-    private FrameLayout[] fields;
-    private Button btnXacNhan;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_setup_yard);
-
-//        // Liên kết các thành phần từ XML
-        editTextDate = findViewById(R.id.editTextDate);
-        ivCalendarIcon = findViewById(R.id.ivCalendarIcon);
-//        btnXacNhan = findViewById(R.id.btnXacNhan);
-//
-//        // Các sân bóng
-        fields = new FrameLayout[]{
-                findViewById(R.id.img1),
-                findViewById(R.id.img2),
-                findViewById(R.id.img3),
-                findViewById(R.id.img4),
-                findViewById(R.id.img5),
-                findViewById(R.id.img6),
-                findViewById(R.id.img7),
-                findViewById(R.id.img8),
-                findViewById(R.id.img9),
-                findViewById(R.id.img10)
-        };
-//
-        // Xử lý sự kiện chọn ngày
-        ivCalendarIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDatePicker();
-            }
-        });
-//
-//        // Thiết lập sự kiện click cho từng sân
-//        for (FrameLayout field : fields) {
-//            field.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    selectField(view);
-//                }
-//            });
-//        }
-//
-//        // Xử lý sự kiện xác nhận
-//        btnXacNhan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                confirmSelection();
-//            }
-//        });
-    }
-
-    // Hàm hiển thị DatePicker để chọn ngày
-    private void showDatePicker() {
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(Setup_yard.this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        editTextDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                    }
-                }, year, month, day);
-        datePickerDialog.show();
-    }
-
-    // Hàm để chọn sân bóng
-    private void selectField(View view) {
-        for (FrameLayout field : fields) {
-            field.setBackgroundColor(Color.TRANSPARENT);  // Reset lại màu nền cho tất cả các sân
-        }
-        view.setBackgroundColor(Color.YELLOW);  // Đổi màu nền cho sân được chọn
-    }
-
-    // Hàm xử lý khi nhấn nút Xác nhận
-    private void confirmSelection() {
-        String selectedDate = editTextDate.getText().toString();
-        if (selectedDate.isEmpty()) {
-            Toast.makeText(Setup_yard.this, "Vui lòng chọn ngày", Toast.LENGTH_SHORT).show();
-            return;
+            // Tìm các View sân
+            findViewById(R.id.img1).setOnClickListener(v -> showTimePickerDialog(1));
+            findViewById(R.id.img2).setOnClickListener(v -> showTimePickerDialog(2));
+            findViewById(R.id.img3).setOnClickListener(v -> showTimePickerDialog(3));
+            findViewById(R.id.img4).setOnClickListener(v -> showTimePickerDialog(4));
+            findViewById(R.id.img5).setOnClickListener(v -> showTimePickerDialog(5));
+            findViewById(R.id.img6).setOnClickListener(v -> showTimePickerDialog(6));
+            findViewById(R.id.img7).setOnClickListener(v -> showTimePickerDialog(7));
+            findViewById(R.id.img8).setOnClickListener(v -> showTimePickerDialog(8));
+            findViewById(R.id.img9).setOnClickListener(v -> showTimePickerDialog(9));
         }
 
-        boolean isFieldSelected = false;
-        for (FrameLayout field : fields) {
-            if (field.getBackground() != null && ((ColorDrawable) field.getBackground()).getColor() == Color.YELLOW) {
-                isFieldSelected = true;
-                break;
-            }
-        }
+        // Hàm hiển thị dialog chọn giờ
+        private void showTimePickerDialog(int sanSo) {
+            // Tạo một Dialog để hiển thị bảng chọn giờ
+            Dialog dialog = new Dialog(this);
+            dialog.setContentView(R.layout.activity_time_setupyard); // Thay dialog_chon_gio bằng tên layout bảng chọn giờ của bạn
 
-        if (!isFieldSelected) {
-            Toast.makeText(Setup_yard.this, "Vui lòng chọn sân bóng", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(Setup_yard.this, "Xác nhận thành công!", Toast.LENGTH_SHORT).show();
+            // Tìm và xử lý các TextView hoặc Button trong dialog
+            TextView title = dialog.findViewById(R.id.);
+            title.setText("Chọn giờ cho sân số " + sanSo);
+
+            Button confirmButton = dialog.findViewById(R.id.);
+            confirmButton.setOnClickListener(v -> {
+                // Xử lý sự kiện khi người dùng chọn giờ và nhấn "CHỌN"
+                dialog.dismiss(); // Đóng dialog
+                // Thực hiện hành động lưu thời gian vào hệ thống để ngăn trùng lịch
+            });
+
+            // Hiển thị dialog lên màn hình
+            dialog.show();
         }
     }
-}
