@@ -13,4 +13,21 @@
     <string name="library">Library</string>
     <string name="shorts">Shorts</string>
     <string name="subscriptions">Subscriptions</string>
+
+    <!--  Các string label và hint dùng khi đăng ký, đăng nhập,... -->
+    <string name="phone_text">Số điện thoại</string>
+    <string name="pass_label">Mật khẩu</string>
+    <string name="pass_hint">VD: 123456789aZ</string>
+    <string name="hint_phone">VD: 0123456789</string>
+    <string name="email_text">Email</string>
+    <string name="hint_email">VD: thuan@gmail.com</string>
+    <string name="name_text">Họ và tên</string>
+    <string name="hint_name">VD: Nguyễn Minh Thuận</string>
+    <string name="gender_text">Giới tính</string>
+    <string name="dob_text">Ngày sinh</string>
+    <string name="hint_dob">15/11/2003</string>
+    <string name="update_info_text">Cập nhật thông tin</string>
+    <string name="register">Đăng ký</string>
+    <string name="register_label">Thông tin đăng ký</string>
+
 </resources>
