@@ -12,6 +12,9 @@
     <color name="purple">#8692f7</color>
     <color name="orange">#FFA500</color>
     <color name="red">#FF0000</color>
+    <color name="design_default_color_error">#F44336</color> <!-- Đỏ -->
+
+
 
     <!-- Chọn primary color là màu xanh -->
     <color name="primary_900">#1B419D</color>
