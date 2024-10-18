@@ -13,18 +13,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:text="Trạng thái sân"
+        android:text="TRẠNG THÁI SÂN"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
-        android:gravity="end"> <!-- Căn chỉnh các phần tử về phía bên phải -->
+        android:gravity="end">
 
-        <!-- TextView hiển thị ngày -->
+        <!-- EditText để chọn ngày -->
         <EditText
             android:id="@+id/editTextDate"
             android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:padding="10dp"
-          />
+            />
 
         <!-- Icon lịch -->
         <ImageView
@@ -44,150 +44,8 @@
             android:layout_gravity="center"
             android:layout_marginStart="8dp"
             android:contentDescription="Chọn ngày"
-            android:src="@drawable/calendar" /> <!-- Đảm bảo bạn có drawable icon này -->
+            android:src="@drawable/calendar" />
     </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/tvChonGio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:text="Chọn giờ"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:columnCount="4">
-
-        <!-- Các nút giờ -->
-        <Button
-            android:id="@+id/btnTime9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="09:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-
-        <Button
-            android:id="@+id/btnTime10"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="10:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-        <Button
-            android:id="@+id/btnTime11"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="11:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-        <Button
-            android:id="@+id/btnTime13"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="13:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-        <Button
-            android:id="@+id/btnTime14"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="14:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-        <Button
-            android:id="@+id/btnTime15"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="15:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-        <Button
-            android:id="@+id/btnTime16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="16:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-        <Button
-            android:id="@+id/btnTime17"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="17:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-        <Button
-            android:id="@+id/btnTime18"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="18:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-        <Button
-            android:id="@+id/btnTime19"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="19:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-        <Button
-            android:id="@+id/btnTime20"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="20:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-        <Button
-            android:id="@+id/btnTime21"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:textSize="12dp"
-            android:text="21:00"
-            android:textColor="@color/white"
-            android:background="@drawable/button_border"/>
-
-    </GridLayout>
 
     <TextView
         android:id="@+id/tvChonSan"
@@ -197,49 +55,48 @@
         android:layout_marginTop="20dp"
         android:text="Chọn sân"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="25sp" />
 
+    <!-- GridLayout hiển thị 3 hàng và 3 cột -->
     <GridLayout
         android:id="@+id/gridLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:rowCount="2"
-        android:columnCount="5"
+        android:rowCount="3"
+        android:columnCount="3"
         android:layout_gravity="center">
 
+        <!-- Sân 1 -->
         <FrameLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp">
 
-            <!-- ImageView for the field image -->
             <ImageView
                 android:id="@+id/img1"
-                android:layout_width="match_parent"
+                android:layout_width="90dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/icon_san"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_san" />
 
-            <!-- TextView for the number inside the red circle -->
             <TextView
                 android:id="@+id/san_so1"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:text="1"
                 android:textSize="15sp"
                 android:textColor="@color/black"
-            android:gravity="center"
-            android:background="@drawable/circle_background"
-            android:layout_gravity="center" />
-
+                android:gravity="center"
+                android:background="@drawable/circle_background"
+                android:layout_gravity="center" />
         </FrameLayout>
 
+        <!-- Sân 2 -->
         <FrameLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp">
 
-            <!-- ImageView for the field image -->
             <ImageView
                 android:id="@+id/img2"
                 android:layout_width="match_parent"
@@ -247,134 +104,128 @@
                 android:src="@drawable/icon_san"
                 android:scaleType="centerInside" />
 
-            <!-- TextView for the number inside the red circle -->
             <TextView
                 android:id="@+id/san_so2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:text="2"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:background="@drawable/circle_background"
                 android:layout_gravity="center" />
-
         </FrameLayout>
 
+        <!-- Sân 3 -->
         <FrameLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp">
 
-            <!-- ImageView for the field image -->
-            <ImageView
+
+        <ImageView
                 android:id="@+id/img3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/icon_san"
                 android:scaleType="centerInside" />
 
-            <!-- TextView for the number inside the red circle -->
             <TextView
                 android:id="@+id/san_so3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:text="3"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:background="@drawable/circle_background"
                 android:layout_gravity="center" />
-
         </FrameLayout>
 
+        <!-- Sân 4 -->
         <FrameLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp">
 
-            <!-- ImageView for the field image -->
-            <ImageView
+
+        <ImageView
                 android:id="@+id/img4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/icon_san"
                 android:scaleType="centerInside" />
 
-            <!-- TextView for the number inside the red circle -->
             <TextView
                 android:id="@+id/san_so4"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:text="4"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:background="@drawable/circle_background"
                 android:layout_gravity="center" />
-
         </FrameLayout>
 
+        <!-- Sân 5 -->
         <FrameLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp">
 
-            <!-- ImageView for the field image -->
-            <ImageView
+
+        <ImageView
                 android:id="@+id/img5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/icon_san"
                 android:scaleType="centerInside" />
 
-            <!-- TextView for the number inside the red circle -->
             <TextView
                 android:id="@+id/san_so5"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:text="5"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:background="@drawable/circle_background"
                 android:layout_gravity="center" />
-
         </FrameLayout>
 
+        <!-- Sân 6 -->
         <FrameLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp">
 
-            <!-- ImageView for the field image -->
-            <ImageView
+
+        <ImageView
                 android:id="@+id/img6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/icon_san"
                 android:scaleType="centerInside" />
 
-            <!-- TextView for the number inside the red circle -->
             <TextView
                 android:id="@+id/san_so6"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:text="6"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:background="@drawable/circle_background"
                 android:layout_gravity="center" />
-
         </FrameLayout>
 
+        <!-- Sân 7 -->
         <FrameLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp">
 
-            <!-- ImageView for the field image -->
             <ImageView
                 android:id="@+id/img7"
                 android:layout_width="match_parent"
@@ -382,25 +233,24 @@
                 android:src="@drawable/icon_san"
                 android:scaleType="centerInside" />
 
-            <!-- TextView for the number inside the red circle -->
             <TextView
                 android:id="@+id/san_so7"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:text="7"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:background="@drawable/circle_background"
                 android:layout_gravity="center" />
-
         </FrameLayout>
+
+        <!-- Sân 8 -->
         <FrameLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp">
 
-            <!-- ImageView for the field image -->
             <ImageView
                 android:id="@+id/img8"
                 android:layout_width="match_parent"
@@ -408,25 +258,24 @@
                 android:src="@drawable/icon_san"
                 android:scaleType="centerInside" />
 
-            <!-- TextView for the number inside the red circle -->
             <TextView
                 android:id="@+id/san_so8"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:text="8"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:background="@drawable/circle_background"
                 android:layout_gravity="center" />
-
         </FrameLayout>
+
+        <!-- Sân 9 -->
         <FrameLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp">
 
-            <!-- ImageView for the field image -->
             <ImageView
                 android:id="@+id/img9"
                 android:layout_width="match_parent"
@@ -434,48 +283,18 @@
                 android:src="@drawable/icon_san"
                 android:scaleType="centerInside" />
 
-            <!-- TextView for the number inside the red circle -->
             <TextView
                 android:id="@+id/san_so9"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:text="9"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:background="@drawable/circle_background"
                 android:layout_gravity="center" />
-
         </FrameLayout>
-        <FrameLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp">
-
-            <!-- ImageView for the field image -->
-            <ImageView
-                android:id="@+id/img10"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/icon_san"
-                android:scaleType="centerInside" />
-
-            <!-- TextView for the number inside the red circle -->
-            <TextView
-                android:id="@+id/san_so10"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:text="10"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:background="@drawable/circle_background"
-                android:layout_gravity="center" />
-
-        </FrameLayout>
-
     </GridLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -490,32 +309,15 @@
             android:layout_marginEnd="16dp">
 
             <View
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@color/white"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="24dp"
                 android:text="Trống"
-                android:textColor="@android:color/white"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginEnd="16dp">
-
-            <View
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="8dp"
-                android:background="#F4DD18" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đang chờ xác nhận"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
 
@@ -525,14 +327,15 @@
             android:orientation="horizontal">
 
             <View
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="20dp"
                 android:background="@color/design_default_color_error" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đã đặt"
+                android:textSize="24dp"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
     </LinearLayout>
@@ -545,9 +348,8 @@
         android:layout_marginBottom="16dp"
         android:text="Xác nhận"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:backgroundTint="@color/design_default_color_primary"
         android:padding="12dp"
         android:layout_gravity="center"/>
-
 </LinearLayout>
