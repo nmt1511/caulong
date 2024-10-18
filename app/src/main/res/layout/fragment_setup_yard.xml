@@ -47,7 +47,6 @@
             android:src="@drawable/calendar" /> <!-- Đảm bảo bạn có drawable icon này -->
     </LinearLayout>
 
-
     <TextView
         android:id="@+id/tvChonGio"
         android:layout_width="wrap_content"
