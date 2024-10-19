@@ -4,27 +4,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeFragment">
-    <LinearLayout
-            android:id="@+id/layout_top"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="16dp"
-            android:background="@drawable/banner"
-            android:orientation="horizontal"
-            android:padding="16dp">
-        </LinearLayout>
 
-<!--    dich vu-->
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/banner"
+        android:orientation="horizontal"
+        android:padding="16dp" />
+
+    <!-- Dịch vụ -->
     <TableLayout
         android:id="@+id/table1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="*"
-        android:layout_below="@+id/layout_top"
+        android:layout_below="@+id/top_layout"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp">
+
         <TableRow android:id="@+id/row1">
             <LinearLayout
+                android:id="@+id/dat_san"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -47,6 +49,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/dich_vu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -67,7 +70,9 @@
                     android:textColor="#000"
                     android:gravity="center" />
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/lich_su"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -77,8 +82,8 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/baseline_info_24"
-                    android:contentDescription="Tìm đường" />
+                    android:src="@drawable/history"
+                    android:contentDescription="lịch sử" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -88,10 +93,11 @@
                     android:textColor="#000"
                     android:gravity="center" />
             </LinearLayout>
-
         </TableRow>
+
         <TableRow android:id="@+id/row2">
             <LinearLayout
+                android:id="@+id/thong_tin_ca_nhan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -114,6 +120,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ho_tro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -134,9 +141,6 @@
                     android:textColor="#000"
                     android:gravity="center" />
             </LinearLayout>
-
         </TableRow>
-
     </TableLayout>
-
 </RelativeLayout>

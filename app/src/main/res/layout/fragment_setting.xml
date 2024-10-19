@@ -1,14 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingFragment">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/off_white">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/text_view_settings_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="Cài Đặt"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:paddingBottom="16dp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/text_view_notification_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thông báo"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:paddingBottom="8dp"
+        android:onClick="onNotificationSettingsClick" />
+
+    <Switch
+        android:id="@+id/switch_notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true" />
+
+    <TextView
+        android:id="@+id/text_view_language_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ngôn ngữ"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:paddingBottom="8dp"
+        android:onClick="onLanguageSettingsClick" />
+
+<!--    <Spinner-->
+<!--        android:id="@+id/spinner_language"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:entries="@array/language_options" />-->
+
+    <TextView
+        android:id="@+id/text_view_clear_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Xóa lịch sử đặt sân"
+        android:textSize="18sp"
+        android:textColor="@color/red"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:onClick="onClearHistoryClick" />
+
+</LinearLayout>

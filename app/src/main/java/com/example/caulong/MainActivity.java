@@ -1,7 +1,12 @@
 package com.example.caulong;
 
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,6 +14,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.caulong.menubottom.AccountFragment;
+import com.example.caulong.menubottom.HistoryFragment;
+import com.example.caulong.menubottom.NotificationFragment;
+import com.example.caulong.menuleft.AboutFragment;
+import com.example.caulong.menuleft.ShareFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -49,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
             }else if(item.getItemId() == R.id.nav_about){
                 replaceFragment(new AboutFragment());
             }else if(item.getItemId() == R.id.nav_logout){
-                replaceFragment(new LogoutFragment());}
+                showExitConfirmationDialog();
+                return true;
+            }
             else if(item.getItemId() == R.id.nav_home){
                 replaceFragment(new HomeFragment());
             }
@@ -80,6 +93,31 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_layout, fragment);
         fragmentTransaction.commit();
+    }
+    private void showExitConfirmationDialog() {
+        // Tạo dialog builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_logout_confirmation, null);
+        builder.setView(dialogView);
+
+        // Tìm các thành phần trong dialog
+        Button cancelButton = dialogView.findViewById(R.id.button_cancel);
+        Button confirmButton = dialogView.findViewById(R.id.button_confirm);
+        AlertDialog dialog = builder.create();
+
+        // Sự kiện cho nút Hủy
+        cancelButton.setOnClickListener(v -> dialog.dismiss());
+
+        // Sự kiện cho nút Đăng xuất
+        confirmButton.setOnClickListener(v -> {
+            // Thoát ứng dụng
+            dialog.dismiss();
+            finish();
+            System.exit(0);
+        });
+
+        // Hiển thị dialog
+        dialog.show();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.caulong;
+package com.example.caulong.menubottom;
 
 public class BookingHistory {
     private String courtName;

@@ -1,6 +1,5 @@
-package com.example.caulong;
+package com.example.caulong.menubottom;
 
-import android.app.Notification;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.caulong.R;
 
 import java.util.ArrayList;
 import java.util.List;

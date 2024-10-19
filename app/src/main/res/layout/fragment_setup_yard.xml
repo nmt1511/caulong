@@ -2,9 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#f7f9f7"
-    android:padding="16dp">
+    android:background="#f7f9f7">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="?attr/selectableItemBackground"
+        android:src="@drawable/back"
+        android:contentDescription="Trở lại"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp" />
 
     <!-- LinearLayout chứa icon chọn ngày và TextView -->
     <LinearLayout

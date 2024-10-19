@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,8 +8,17 @@
     tools:context=".MainActivity"
     android:background="@color/xam">
 
-    <!-- Header section -->
-
+    <!-- Back button -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="?attr/selectableItemBackground"
+        android:src="@drawable/back"
+        android:contentDescription="Trở lại"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp" />
 
     <ImageView
         android:id="@+id/imgProfile"
@@ -17,12 +27,10 @@
         android:layout_marginTop="50dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_profile"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <!--    </FrameLayout>-->
+        app:layout_constraintTop_toBottomOf="@id/btnBack" />
 
     <TextView
         android:id="@+id/txtTitle"
@@ -37,14 +45,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
-
     <!-- Menu items -->
     <LinearLayout
         android:id="@+id/linearMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp">
@@ -69,7 +76,6 @@
             android:drawablePadding="8dp"
             android:padding="16dp" />
 
-
         <TextView
             android:id="@+id/txtRateApp"
             android:layout_width="match_parent"
@@ -78,8 +84,7 @@
             android:textSize="16sp"
             android:drawableStart="@drawable/baseline_info_24"
             android:drawablePadding="8dp"
-            android:padding="16dp"
-            />
+            android:padding="16dp" />
 
         <TextView
             android:id="@+id/txtCompanyInfo"
@@ -90,15 +95,15 @@
             android:drawableStart="@drawable/baseline_info_24"
             android:drawablePadding="8dp"
             android:padding="16dp" />
+
         <TextView
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="đăng xuất"
+            android:text="Đăng xuất"
             android:textSize="16sp"
             android:drawableStart="@drawable/baseline_info_24"
             android:drawablePadding="8dp"
             android:padding="16dp" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

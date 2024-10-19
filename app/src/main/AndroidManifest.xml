@@ -21,6 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".menubottom.Account"/>
+        <activity android:name=".Setup_yard"/>
+        <activity android:name=".menubottom.AccountFragment"/>
+        <activity android:name=".menubottom.HistoryFragment"/>
+        <activity android:name=".menubottom.NotificationFragment"/>
+        <activity android:name=".menuleft.AboutFragment"/>
+        <activity android:name=".menuleft.ShareFragment"/>
     </application>
 
 </manifest>

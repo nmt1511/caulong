@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,7 +35,13 @@ public class Setup_yard extends AppCompatActivity {
         btnXacNhan = findViewById(R.id.btnXacNhan);
         listViewYard = findViewById(R.id.listViewYards);
         ImageView baselineCalendar = findViewById(R.id.pickTime);
-
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Trở lại activity trước đó
+            }
+        });
         // Create a list of dummy yards
         danhSachSan = new ArrayList<>();
         for (int i = 1; i <= 6; i++) {
