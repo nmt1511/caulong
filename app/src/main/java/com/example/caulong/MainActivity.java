@@ -33,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        // Load fragment đầu tiên nếu chưa có
-//        if (savedInstanceState == null) {
-//            //Hiện Map đầu tiên
-//            replaceFragment(new MapsFragment());
-//            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new HomeFragment()).commit();
-//            navigationView.setCheckedItem(R.id.nav_home);
-//        }
+//         Load fragment đầu tiên nếu chưa có
+        if (savedInstanceState == null) {
+            //Hiện Map đầu tiên
+            replaceFragment(new HomeFragment());
+            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new HomeFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
         //Thay thế Fragment theo lựa chọn của NavigationView
         navigationView.setNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_settings) {
@@ -50,9 +50,10 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new AboutFragment());
             }else if(item.getItemId() == R.id.nav_logout){
                 replaceFragment(new LogoutFragment());}
-//            }else if(item.getItemId() == R.id.nav_home){
-//                replaceFragment(new MapsFragment());
-//            }
+            else if(item.getItemId() == R.id.nav_home){
+                replaceFragment(new HomeFragment());
+            }
+
             return true;
         });
 
@@ -60,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if(item.getItemId() == R.id.home)
             {
-                replaceFragment(new ShortsFragment());
+                replaceFragment(new HomeFragment());
 //                replaceFragment(new MapsFragment());
-            } else if (item.getItemId() == R.id.shorts) {
-                replaceFragment(new ShortsFragment());
-            }else if (item.getItemId() == R.id.subscriptions) {
-                replaceFragment(new SubscriptionFragment());
-            }else if (item.getItemId() == R.id.library) {
-                replaceFragment(new LibraryFragment());
+            } else if (item.getItemId() == R.id.noti) {
+                replaceFragment(new NotificationFragment());
+            }else if (item.getItemId() == R.id.history) {
+                replaceFragment(new HistoryFragment());
+            }else if (item.getItemId() == R.id.account) {
+                replaceFragment(new AccountFragment());
             }
             return true;
         });

@@ -1,32 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="176dp"
-    android:gravity="bottom"
+    android:layout_height="160dp"
+    android:orientation="vertical"
+    android:background="@color/header_background"
     android:padding="16dp"
-    android:background="@drawable/headerbkg"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></ImageView>
-<!--        android:src="@drawable/aklogo"/>-->
+    android:gravity="bottom">
 
     <TextView
+        android:id="@+id/header_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="xe bus bình dương"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
+        android:text="Sân cầu lông HTT"
+        android:textSize="18sp"
+        android:textColor="@color/off_white"
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/header_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="contact@xebusbinhduong.com"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:layout_marginBottom="16dp"/>
-
+        android:text="htt@tdmu.com"
+        android:textColor="@color/off_white"
+        android:textSize="14sp" />
 </LinearLayout>

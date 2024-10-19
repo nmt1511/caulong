@@ -14,7 +14,16 @@
     <color name="red">#FF0000</color>
     <color name="design_default_color_error">#F44336</color> <!-- Đỏ -->
 
-
+    <color name="primary">#03c9a9</color>       <!-- Main color -->
+    <color name="secondary">#93faa5</color>     <!-- Secondary color -->
+    <color name="light_green">#cdfec2</color>   <!-- Light green -->
+    <color name="off_white">#f7f9f7</color>     <!-- Off white -->
+    <color name="text_primary">#333333</color>  <!-- Primary text -->
+    <color name="text_secondary">#666666</color> <!-- Secondary text -->
+    <color name="border_color">#d1d5db</color>  <!-- Borders -->
+    <color name="warning_color">#ff6b6b</color> <!-- Warnings -->
+    <color name="notice_color">#ffc107</color>  <!-- Notices -->
+    <color name="header_background">#6A5ACD</color> <!-- Soft lavender for header -->
 
     <!-- Chọn primary color là màu xanh -->
     <color name="primary_900">#1B419D</color>

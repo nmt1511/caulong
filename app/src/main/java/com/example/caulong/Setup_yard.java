@@ -4,10 +4,12 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +19,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Setup_yard extends AppCompatActivity {
-    private EditText editTextDate;
+    private TextView tvSelectedDate;
     private Button btnXacNhan;
     private ListView listViewYard;
     private List<String> danhSachSan;
@@ -27,65 +29,82 @@ public class Setup_yard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_setup_yard);
 
-        // Ánh xạ các thành phần giao diện
-        editTextDate = findViewById(R.id.editTextDate);
+        // Initialize UI components
+        tvSelectedDate = findViewById(R.id.tvSelectedDate);
         btnXacNhan = findViewById(R.id.btnXacNhan);
         listViewYard = findViewById(R.id.listViewYards);
+        ImageView baselineCalendar = findViewById(R.id.pickTime);
 
-        // Tạo danh sách các sân giả định
+        // Create a list of dummy yards
         danhSachSan = new ArrayList<>();
         for (int i = 1; i <= 6; i++) {
             danhSachSan.add("Sân " + i);
         }
 
-        // Ẩn ListView ban đầu
+        // Hide ListView initially
         listViewYard.setVisibility(View.GONE);
 
-        // Thiết lập sự kiện chọn ngày
-        editTextDate.setOnClickListener(v -> showDatePickerDialog());
+        // Set up date picker dialog on calendar icon click
+        baselineCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
 
-        // Thiết lập sự kiện xác nhận
-        btnXacNhan.setOnClickListener(v -> updateYardList());
+        // Confirmation button event
+        btnXacNhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateYardList();
+            }
+        });
 
-        // Thiết lập sự kiện khi nhấn vào từng item trong ListView
-        listViewYard.setOnItemClickListener((parent, view, position, id) -> {
-            String sanDuocChon = danhSachSan.get(position);
-            Toast.makeText(Setup_yard.this, "Bạn đã chọn " + sanDuocChon, Toast.LENGTH_SHORT).show();
+        // Handle ListView item clicks
+        listViewYard.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String sanDuocChon = danhSachSan.get(position);
+                Toast.makeText(Setup_yard.this, "Bạn đã chọn " + sanDuocChon, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
     private void showDatePickerDialog() {
-        // Lấy ngày hiện tại
+        // Get the current date
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // Hiển thị DatePickerDialog
+        // Show the DatePickerDialog
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 Setup_yard.this,
-                (view, selectedYear, selectedMonth, selectedDay) -> {
-                    // Cập nhật EditText với ngày đã chọn
-                    String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
-                    editTextDate.setText(selectedDate);
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
+                        // Update TextView with the selected date
+                        String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                        tvSelectedDate.setText(selectedDate);
+                    }
                 },
                 year, month, day);
         datePickerDialog.show();
     }
 
     private void updateYardList() {
-        // Kiểm tra xem ngày đã được chọn chưa
-        String selectedDate = editTextDate.getText().toString();
-        if (selectedDate.isEmpty()) {
+        // Check if the date is selected
+        String selectedDate = tvSelectedDate.getText().toString();
+        if (selectedDate.equals("Select Date")) {
             Toast.makeText(this, "Vui lòng chọn ngày", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Hiển thị danh sách sân
+        // Display the yard list
         listViewYard.setVisibility(View.VISIBLE);
 
-        // Sử dụng YardAdapter cho ListView
-        YardAdapter adapter = new YardAdapter(this, danhSachSan);
+        // Create an ArrayAdapter for the ListView
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, danhSachSan);
         listViewYard.setAdapter(adapter);
     }
 }

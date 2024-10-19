@@ -6,17 +6,32 @@
     android:background="#f7f9f7"
     android:padding="16dp">
 
-    <!-- EditText để chọn ngày -->
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="match_parent"
+    <!-- LinearLayout chứa icon chọn ngày và TextView -->
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Chọn ngày đặt"
-        android:textColor="#03c9a9"
-        android:textSize="16sp"
-        android:background="@drawable/edittext_border"
-        android:padding="10dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <!-- Icon chọn ngày -->
+        <ImageView
+            android:id="@+id/pickTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_calendar_month_24"
+            android:contentDescription="Chọn ngày" />
+
+        <!-- TextView để hiển thị ngày đã chọn -->
+        <TextView
+            android:id="@+id/tvSelectedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Chưa chọn ngày"
+            android:textColor="#000"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <!-- ListView hiển thị danh sách sân -->
     <ListView
