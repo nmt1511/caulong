@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.example.caulong.booking.Booking_yard;
 import com.example.caulong.menubottom.Account;
 import com.example.caulong.menubottom.AccountFragment;
 
@@ -33,19 +34,19 @@ public class HomeFragment extends Fragment {
         // Gán sự kiện click cho từng chức năng
         datSanLayout.setOnClickListener(v -> {
             // Mở activity để đặt sân
-            Intent intent = new Intent(getActivity(), Setup_yard.class);
+            Intent intent = new Intent(getActivity(), Booking_yard.class);
             startActivity(intent);
         });
 
         dichVuLayout.setOnClickListener(v -> {
             // Mở activity để xem dịch vụ
-            Intent intent = new Intent(getActivity(), Setup_yard.class);
+            Intent intent = new Intent(getActivity(), Booking_yard.class);
             startActivity(intent);
         });
 
         lichSuLayout.setOnClickListener(v -> {
             // Mở activity để xem lịch sử
-            Intent intent = new Intent(getActivity(), Setup_yard.class);
+            Intent intent = new Intent(getActivity(), Booking_yard.class);
             startActivity(intent);
         });
 
@@ -57,7 +58,7 @@ public class HomeFragment extends Fragment {
 
         hoTroLayout.setOnClickListener(v -> {
             // Mở activity để hỗ trợ
-            Intent intent = new Intent(getActivity(), Setup_yard.class);
+            Intent intent = new Intent(getActivity(), Booking_yard.class);
             startActivity(intent);
         });
 
