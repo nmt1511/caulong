@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.caulong.data.DataDatSan;
 import com.example.caulong.menubottom.AccountFragment;
 import com.example.caulong.menubottom.HistoryFragment;
 import com.example.caulong.menubottom.NotificationFragment;
@@ -27,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     BottomNavigationView bottomNavigationView;
+    DataDatSan dbDatSan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Khởi tạo CSDL
+        dbDatSan = new DataDatSan(this);
+        dbDatSan.getWritableDatabase();
         // Gán view cho DrawerLayout, Toolbar và BottomNavigationView
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
