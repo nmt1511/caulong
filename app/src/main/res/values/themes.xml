@@ -4,6 +4,15 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
+<style name="test">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="12dp"
+    android:layout_margin="15dp"
+    android:background="@drawable/rounded_background"
+    android:elevation="2dp"
+</style>
 
     <style name="Theme.Caulong" parent="Base.Theme.Caulong" />
 </resources>
