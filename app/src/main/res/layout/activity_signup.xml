@@ -104,18 +104,7 @@
                 android:layout_weight="3"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_dob"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@drawable/edittext_border"
-                    android:drawableTint="@color/primary_600"
-                    android:fontFamily="@font/quicksand_semi_bold"
-                    android:gravity="center_vertical"
-                    android:hint="@string/hint_dob"
-                    android:paddingLeft="12dp"
-                    android:textSize="18sp" />
+
             </LinearLayout>
         </LinearLayout>
 
