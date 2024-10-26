@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.caulong.booking.Booking_yard;
+import com.example.caulong.feedback.feedback;
 import com.example.caulong.menubottom.Account;
 import com.example.caulong.menubottom.AccountFragment;
 
@@ -30,7 +31,7 @@ public class HomeFragment extends Fragment {
         LinearLayout lichSuLayout = view.findViewById(R.id.lich_su);
         LinearLayout thongTinCaNhanLayout = view.findViewById(R.id.thong_tin_ca_nhan);
         LinearLayout hoTroLayout = view.findViewById(R.id.ho_tro);
-
+        LinearLayout lienHeLayout = view.findViewById(R.id.lien_he);
         // Gán sự kiện click cho từng chức năng
         datSanLayout.setOnClickListener(v -> {
             // Mở activity để đặt sân
@@ -59,6 +60,11 @@ public class HomeFragment extends Fragment {
         hoTroLayout.setOnClickListener(v -> {
             // Mở activity để hỗ trợ
             Intent intent = new Intent(getActivity(), Booking_yard.class);
+            startActivity(intent);
+        });
+        lienHeLayout.setOnClickListener(v -> {
+            // Mở activity để liên hệ
+            Intent intent = new Intent(getActivity(), feedback.class);
             startActivity(intent);
         });
 

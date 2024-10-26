@@ -1,5 +1,6 @@
 package com.example.caulong.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -126,6 +127,7 @@ public class DataDatSan extends SQLiteOpenHelper {
                 "payment_method TEXT, " +
                 "payment_status TEXT, " +
                 "FOREIGN KEY(booking_id) REFERENCES Booking(booking_id))");
+
     }
 
     @Override
@@ -143,4 +145,5 @@ public class DataDatSan extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Payment");
         onCreate(db);
     }
+
 }

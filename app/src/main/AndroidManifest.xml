@@ -32,6 +32,7 @@
         <activity android:name=".booking.NuocActivity" />
         <activity android:name=".booking.FoodActivity" />
         <activity android:name=".booking.DichVuActivity" />
+        <activity android:name=".feedback.feedback" />
     </application>
 
 </manifest>
