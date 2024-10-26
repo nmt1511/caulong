@@ -36,4 +36,8 @@ public class times implements Serializable {
     public void setValue(double value) {
         this.value = value;
     }
+    @Override
+    public String toString() {
+        return time_name; // Hiển thị tên sân trong Spinner
+    }
 }

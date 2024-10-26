@@ -5,14 +5,12 @@ import java.io.Serializable;
 public class court implements Serializable {
     private String court_id;
     private String court_name;
-    private String court_type;
     private double price;
     private String status;
 
-    public court(String court_id, String court_name, String court_type, double price, String status) {
+    public court(String court_id, String court_name, double price, String status) {
         this.court_id = court_id;
         this.court_name = court_name;
-        this.court_type = court_type;
         this.price = price;
         this.status = status;
     }
@@ -33,14 +31,6 @@ public class court implements Serializable {
         this.court_name = court_name;
     }
 
-    public String getCourt_type() {
-        return court_type;
-    }
-
-    public void setCourt_type(String court_type) {
-        this.court_type = court_type;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -55,5 +45,9 @@ public class court implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    @Override
+    public String toString() {
+        return court_name; // Hiển thị tên sân trong Spinner
     }
 }
