@@ -105,13 +105,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand_semi_bold"
-                    android:text="@string/dob_text"
-                    android:textSize="18sp" />
-
-                <TextView
                     android:id="@+id/tv_dob"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -186,6 +179,13 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="4dp"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_semi_bold"
+                android:text="@string/dob_text"
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"

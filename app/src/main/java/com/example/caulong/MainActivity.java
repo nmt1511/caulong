@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
             if(item.getItemId() == R.id.home)
             {
                 replaceFragment(new HomeFragment());
-//                replaceFragment(new MapsFragment());
             } else if (item.getItemId() == R.id.noti) {
                 replaceFragment(new NotificationFragment());
             }else if (item.getItemId() == R.id.history) {

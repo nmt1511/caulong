@@ -10,11 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.caulong.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AccountFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class AccountFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
