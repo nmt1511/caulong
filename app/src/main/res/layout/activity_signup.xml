@@ -79,7 +79,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:orientation="vertical">
@@ -91,11 +91,31 @@
                     android:text="@string/gender_text"
                     android:textSize="18sp" />
 
-                <Spinner
-                    android:id="@+id/spinner_gender"
-                    android:layout_width="100dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/edittext_border" />
+                <RadioGroup
+                    android:id="@+id/rdigroupDegree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdnam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:checked="true"
+                        android:text="Nam"
+                        android:textSize="18dp" />
+
+                    <RadioButton
+                        android:id="@+id/rdnu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Nữ"
+                        android:textSize="18dp" />
+
+                </RadioGroup>
+
             </LinearLayout>
 
             <LinearLayout
