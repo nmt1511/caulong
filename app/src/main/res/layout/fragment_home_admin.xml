@@ -32,17 +32,6 @@
 
 
 
-    <!-- Search Bar -->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Tìm kiếm dịch vụ"
-        android:background="@drawable/rounded_background"
-        android:drawableStart="@drawable/search"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Categories (Covid, Doctor, Medicine, Hospital) -->
     <TableLayout
         android:id="@+id/table1"
         android:layout_width="match_parent"
@@ -172,109 +161,6 @@
         </TableRow>
     </TableLayout>
 
-    <!-- Doctor List -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nổi Bật"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_background"
-        android:orientation="vertical"
-        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/nearDoctorName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dr. Joseph Brostito"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/primary_text_color" />
-
-        <TextView
-            android:id="@+id/nearDoctorSpeciality"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dental Specialist"
-            android:textColor="@color/secondary_text_color" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@drawable/baseline_clear_24" />
-
-            <TextView
-                android:id="@+id/distance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="1.2 KM"
-                android:textColor="@color/secondary_text_color" />
-        </LinearLayout>
-
-    </LinearLayout>
-    <!-- Doctor List -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tin mới"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_background"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/nearDoctorName1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dr. Joseph Brostito"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/primary_text_color" />
-
-        <TextView
-            android:id="@+id/nearDoctorSpeciality1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dental Specialist"
-            android:textColor="@color/secondary_text_color" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@drawable/baseline_clear_24" />
-
-            <TextView
-                android:id="@+id/test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="1.2 KM"
-                android:textColor="@color/secondary_text_color" />
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

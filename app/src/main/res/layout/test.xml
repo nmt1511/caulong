@@ -30,7 +30,7 @@
             android:src="@drawable/ic_profile" />
     </RelativeLayout>
 
-
+    <!-- Doctor Information -->
 
     <!-- Search Bar -->
     <EditText

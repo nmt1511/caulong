@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/primary"
+            android:background="@color/primary_700"
             android:elevation="4dp"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -35,9 +35,9 @@
             android:layout_height="wrap_content"
             app:menu="@menu/bottom_menu"
             app:labelVisibilityMode="labeled"
-            app:itemIconTint="@color/primary"
+            app:itemIconTint="@color/primary_400"
             app:itemTextColor="@color/text_primary"
-            android:background="@color/off_white" />
+            android:background="@color/primary_50" />
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

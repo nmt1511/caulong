@@ -32,5 +32,7 @@
     <string name="register">Đăng ký</string>
     <string name="register_label">Thông tin đăng ký</string>
 
+    <string name="qlsan">Quản Lý Sân</string>
+    <string name="qldichvu">Quản Dịch Vụ</string>
 
 </resources>
