@@ -276,7 +276,7 @@ public class Booking_yard extends AppCompatActivity {
         buttonDichVuKhac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Booking_yard.this, DichVuActivity.class);
+                Intent intent = new Intent(Booking_yard.this, ServiceTypeListActivity.class);
                 startActivity(intent);
             }
         });
