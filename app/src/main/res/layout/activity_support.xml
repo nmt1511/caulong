@@ -1,0 +1,190 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Thông tin về app -->
+        <TextView
+            android:text="Thông tin về HTTsport"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="#333333"/>
+
+        <TextView
+            android:text="Sân HTTsport mang đến trải nghiệm nhanh chóng, tiện lợi cho người dùng. Với HTTsport, bạn có thể dễ dàng tìm và đặt sân cầu lông ở gần, cùng với các dịch vụ tiện ích như đồ ăn, thức uống để tận hưởng trọn vẹn buổi chơi. Đội ngũ hỗ trợ luôn sẵn sàng giải đáp mọi thắc mắc, giúp bạn có trải nghiệm tốt nhất. HTTsport đang phát triển thêm các tính năng mới như theo dõi lịch sử đặt sân, chia sẻ kinh nghiệm, và cập nhật sự kiện để đáp ứng nhu cầu ngày càng cao của người dùng. HTTsport xin trân thành cảm cảm ơn sự ủng hộ, đóng góp ý kiến của quý khách để HTTsport ngày càng phát triển hoàn thiện hơn."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textColor="#555555"/>
+
+        <!-- Thông tin liên hệ -->
+        <TextView
+            android:text="Liên hệ chúng tôi"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"/>
+
+        <!-- Thông tin Số điện thoại -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="openPhoneNumber">
+
+            <ImageView
+                android:src="@drawable/icon_phone"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="Phone"/>
+
+            <TextView
+                android:text="0328 450 769"
+                android:layout_marginStart="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#333333"/>
+        </LinearLayout>
+        <!-- Thông tin Facebook -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="openFacebook">
+
+            <ImageView
+                android:src="@drawable/icon_facebook"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="Facebook"/>
+
+            <TextView
+                android:text="Facebook"
+                android:layout_marginStart="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#333333"/>
+        </LinearLayout>
+
+        <!-- Thông tin Zalo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="openZalo">
+
+            <ImageView
+                android:src="@drawable/icon_zalo"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="Zalo"/>
+
+            <TextView
+                android:text="Zalo"
+                android:layout_marginStart="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#333333"/>
+        </LinearLayout>
+
+        <!-- Thông tin Instagram -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="openInstagram">
+
+            <ImageView
+                android:src="@drawable/icon_ig"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="Instagram"/>
+
+            <TextView
+                android:text="Instagram"
+                android:layout_marginStart="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#333333"/>
+        </LinearLayout>
+
+        <!-- Thông tin TikTok -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="openTikTok">
+
+            <ImageView
+                android:src="@drawable/icon_tiktok"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="TikTok"/>
+
+            <TextView
+                android:text="TikTok"
+                android:layout_marginStart="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#333333"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
