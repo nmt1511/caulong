@@ -12,6 +12,7 @@ import com.example.caulong.booking.Booking_yard;
 import com.example.caulong.feedback.feedback;
 import com.example.caulong.menubottom.Account;
 import com.example.caulong.menubottom.AccountFragment;
+import com.example.caulong.support.support;
 
 public class HomeFragment extends Fragment {
 
@@ -59,7 +60,7 @@ public class HomeFragment extends Fragment {
 
         hoTroLayout.setOnClickListener(v -> {
             // Mở activity để hỗ trợ
-            Intent intent = new Intent(getActivity(), Booking_yard.class);
+            Intent intent = new Intent(getActivity(), support.class);
             startActivity(intent);
         });
         lienHeLayout.setOnClickListener(v -> {

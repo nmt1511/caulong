@@ -118,9 +118,8 @@ public class feedback extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull FeedbackViewHolder holder, int position) {
             FeedbackItem feedbackItem = feedbackList.get(position);
-            holder.categoryTextView.setText(feedbackItem.getCategory());
-            holder.ratingTextView.setText("Rating: " + feedbackItem.getRating());
-            holder.commentTextView.setText(feedbackItem.getComment());
+            holder.ratingTextView.setText("Chất lượng dịch vụ: " + feedbackItem.getRating());
+            holder.commentTextView.setText("Góp ý: "+feedbackItem.getComment());
         }
 
         @Override
@@ -135,7 +134,6 @@ public class feedback extends AppCompatActivity {
 
             public FeedbackViewHolder(@NonNull View itemView) {
                 super(itemView);
-                categoryTextView = itemView.findViewById(R.id.categoryTextView);
                 ratingTextView = itemView.findViewById(R.id.tv_rating);
                 commentTextView = itemView.findViewById(R.id.tv_comment);
             }

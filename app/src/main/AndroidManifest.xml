@@ -33,6 +33,7 @@
         <activity android:name=".booking.FoodActivity" />
         <activity android:name=".booking.DichVuActivity" />
         <activity android:name=".feedback.feedback" />
+        <activity android:name=".support.support" />
     </application>
 
 </manifest>

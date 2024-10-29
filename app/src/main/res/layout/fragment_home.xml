@@ -67,7 +67,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="đặt sân"
+                    android:text="Đặt sân"
                     android:textSize="14sp"
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
@@ -86,7 +86,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="dịch vụ"
+                    android:text="Dịch vụ"
                     android:textSize="14sp"
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
@@ -105,7 +105,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="lịch sử"
+                    android:text="Lịch sử"
                     android:textSize="14sp"
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
@@ -145,7 +145,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="liên hệ "
+                    android:text="Đánh giá"
                     android:textSize="14sp"
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
