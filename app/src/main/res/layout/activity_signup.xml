@@ -9,12 +9,12 @@
     <RelativeLayout
         android:id="@+id/rl_header"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="wrap_content">
 
         <View
             android:id="@+id/background_title"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="70dp"
             android:background="@color/primary_600" />
 
         <TextView
@@ -26,25 +26,31 @@
             android:fontFamily="@font/quicksand_bold"
             android:text="@string/app_name"
             android:textColor="@color/secondary_900"
-            android:textSize="34sp" />
+            android:textSize="34sp"
+            android:padding="10dp"/>
 
     </RelativeLayout>
 
     <LinearLayout
+
         android:id="@+id/ll_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl_header"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
-        android:paddingBottom="18sp">
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+       >
 
         <TextView
             android:text="@string/register_label"
             android:textSize="24sp"
             android:fontFamily="@font/quicksand_bold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="70dp"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="2dp"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/rounded_background"
                 android:drawableTint="@color/primary_600"
                 android:fontFamily="@font/quicksand_semi_bold"
                 android:hint="@string/hint_name"
@@ -146,7 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="2dp"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/rounded_background"
                 android:drawableTint="@color/primary_600"
                 android:fontFamily="@font/quicksand_semi_bold"
                 android:hint="@string/hint_phone"
@@ -174,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="2dp"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/rounded_background"
                 android:drawableTint="@color/primary_600"
                 android:fontFamily="@font/quicksand_semi_bold"
                 android:hint="@string/hint_email"
@@ -193,7 +199,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand_semi_bold"
-                android:text="@string/dob_text"
+                android:text="Tài Khoản"
+                android:textSize="18sp" />
+            <EditText
+                android:id="@+id/edt_username"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/rounded_background"
+                android:drawableTint="@color/primary_600"
+                android:fontFamily="@font/quicksand_semi_bold"
+                android:hint="VD: hoanghm"
+                android:inputType="textPassword"
+                android:paddingLeft="12dp"
                 android:textSize="18sp" />
 
             <TextView
@@ -208,7 +226,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="2dp"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/rounded_background"
                 android:drawableTint="@color/primary_600"
                 android:fontFamily="@font/quicksand_semi_bold"
                 android:hint="@string/pass_hint"
@@ -229,5 +247,6 @@
         android:paddingHorizontal="32dp"
         android:text="@string/register"
         android:textColor="@color/secondary_900"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        />
 </RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:background="@color/primary_50"
+    android:layout_marginBottom="8dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/txtItemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Name"
+        android:textSize="16sp"
+        android:textColor="@color/text_primary"/> <!-- Màu chữ -->
+
+    <TextView
+        android:id="@+id/txt_ItemPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Price"
+        android:textSize="16sp"
+        android:textColor="@color/text_primary"/> <!-- Màu chữ -->
+
+    <Button
+        android:id="@+id/btn_decrease"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_drink"
+        android:text="-"
+        android:textColor="@color/white"/> <!-- Màu chữ -->
+
+    <TextView
+        android:id="@+id/txt_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="0"
+        android:textSize="18sp"
+        android:textColor="@color/text_primary"/> <!-- Màu chữ -->
+
+    <Button
+        android:id="@+id/btn_increase"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_drink"
+        android:text="+"
+        android:textColor="@color/white"/> <!-- Màu chữ -->
+</LinearLayout>

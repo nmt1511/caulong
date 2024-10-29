@@ -45,6 +45,7 @@ public class DataDatSan extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS Customer (" +
                 "customer_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "customer_name TEXT NOT NULL, " +
+                "gender REAL, " +
                 "phone_number TEXT, " +
                 "email TEXT, " +
                 "user_id INTEGER, " +
@@ -90,17 +91,35 @@ public class DataDatSan extends SQLiteOpenHelper {
                 "booking_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "customer_id INTEGER, " +
                 "court_id INTEGER, " +
+                "present_date TEXT, " +
                 "booking_date TEXT, " +
-                "total_time INTEGER, " +
-                "total_item INTEGER, " +
+                "total_time REAL, " +
+                "total_item REAL, " +
                 "FOREIGN KEY(customer_id) REFERENCES Customer(customer_id), " +
                 "FOREIGN KEY(court_id) REFERENCES Court(court_id))");
+
+        // Tạo bảng Service_type
+        db.execSQL("CREATE TABLE IF NOT EXISTS Service_type (" +
+                "type_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "type_name TEXT)");
+        sql = "INSERT INTO Service_type(type_name)"+
+                "VALUES ('Thức ăn'),('Nước uống'),('Dịch vụ khác')";
+        db.execSQL(sql);
 
         // Tạo bảng Service
         db.execSQL("CREATE TABLE IF NOT EXISTS Service (" +
                 "service_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "service_name TEXT NOT NULL, " +
-                "service_price REAL)");
+                "quantity INTEGER, " +
+                "type_id INTEGER NOT NULL, " +
+                "service_price REAL,"+
+                "FOREIGN KEY(type_id) REFERENCES Service_type(type_id))");
+        sql = "INSERT INTO Service(service_name,quantity,type_id, service_price)"+
+                "VALUES ('Bánh mì',50,1,8000),('Mì ly Modern',20,1,12000)," +
+                "('Nước suối',150,2,5000),('Revive',150,2,10000)," +
+                "('Revive chanh muối',150,2,10000),('Cầu',300,3,20000)" ;
+
+        db.execSQL(sql);
 
         // Tạo bảng Booking_time
         db.execSQL("CREATE TABLE IF NOT EXISTS Booking_time (" +
@@ -119,6 +138,26 @@ public class DataDatSan extends SQLiteOpenHelper {
                 "total_price REAL, " +
                 "FOREIGN KEY(booking_id) REFERENCES Booking(booking_id), " +
                 "FOREIGN KEY(service_id) REFERENCES Service(service_id))");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS Tournament (" +
+                "tournament_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT, " +
+                "start_date TEXT, " +
+                "end_date TEXT, " +
+                "description TEXT)");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS Feedback (" +
+                "feedback_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "star REAL, " +
+                "feedback_text TEXT, " +
+                "feedback_date TEXT, " +
+                "customer_id INTEGER," +
+                "FOREIGN KEY(customer_id) REFERENCES Customer(customer_id))");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS Latest_update (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "date TEXT, " +
+                "updated TEXT) ");
 
         // Tạo bảng Payment
         db.execSQL("CREATE TABLE IF NOT EXISTS Payment (" +

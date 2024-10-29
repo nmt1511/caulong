@@ -53,6 +53,6 @@
         android:text="Thêm vào giỏ hàng"
         android:textSize="20sp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/primary"/>
+        android:backgroundTint="@color/primary_700"/>
 
 </LinearLayout>

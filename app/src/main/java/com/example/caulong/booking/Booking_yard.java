@@ -176,13 +176,14 @@ public class Booking_yard extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 //cập nhật GridView với giờ đã đặt sau khi chọn ngày và sân
-//                if (posSpinner != -1 && !selectedDate.isEmpty()) {
-//                    int selectedCourtId = Integer.parseInt(CourtList.get(posSpinner).getCourt_id());
-//                    Set<String> bookedTimes = getBookedTimes(selectedDate, selectedCourtId);
-//                    updateGridViewTimes(bookedTimes);
-//                }else if(posSpinner == -1){
-//                    Toast.makeText(Booking_yard.this, "Hãy chọn sân!", Toast.LENGTH_LONG).show();
-//                }
+                if (posSpinner != -1 && !selectedDate.isEmpty()) {
+                    bookedTimes.clear();
+                    int selectedCourtId = Integer.parseInt(CourtList.get(posSpinner).getCourt_id());
+                    bookedTimes = getBookedTimes(selectedDate, selectedCourtId);
+                    updateGridViewTimes(bookedTimes);
+                }else if(posSpinner == -1){
+                    Toast.makeText(Booking_yard.this, "Hãy chọn sân!", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -197,8 +198,9 @@ public class Booking_yard extends AppCompatActivity {
                                        int i, long l) {
                 posSpinner = i;
                 if (posSpinner != -1 && !selectedDate.isEmpty()) {
+                    bookedTimes.clear();
                     int selectedCourtId = Integer.parseInt(CourtList.get(posSpinner).getCourt_id());
-                    Set<String> bookedTimes = getBookedTimes(selectedDate, selectedCourtId);
+                    bookedTimes = getBookedTimes(selectedDate, selectedCourtId);
                     updateGridViewTimes(bookedTimes);
                 }
             }
@@ -274,7 +276,7 @@ public class Booking_yard extends AppCompatActivity {
         buttonDichVuKhac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Booking_yard.this, DichVuActivity.class);
+                Intent intent = new Intent(Booking_yard.this, ServiceTypeListActivity.class);
                 startActivity(intent);
             }
         });
@@ -325,7 +327,10 @@ public class Booking_yard extends AppCompatActivity {
                 if (bookedTimes.contains(timeSlot.getTime_id())) {
                     timeSlotTextView.setBackgroundColor(getResources().getColor(R.color.red));
                     timeSlotTextView.setEnabled(false);
-                } else {
+                }else if (selectedSet.contains(timeSlot.getTime_id())) {
+                    timeSlotTextView.setBackgroundColor(getResources().getColor(R.color.light_green)); // Selected color
+                }
+                else {
                     timeSlotTextView.setBackgroundColor(getResources().getColor(R.color.primary_100));
                     timeSlotTextView.setEnabled(true);
                 }

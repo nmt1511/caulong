@@ -22,6 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".booking.ServiceTypeListActivity"/>
+        <activity android:name=".booking.ServiceListActivity"/>
         <activity android:name=".menubottom.Account"/>
         <activity android:name=".menubottom.AccountFragment"/>
         <activity android:name=".menubottom.HistoryFragment"/>
