@@ -81,11 +81,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="Not yet registered? SignUp Now"
+        android:text="Chưa đăng kí? Đăng kí ngay"
         android:textSize="14sp"
         android:textAlignment="center"
         android:id="@+id/txtsignup"
         android:textColor="@color/purple"
-        android:layout_marginBottom="20dp"/>
+       />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Quên mật khẩu?"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        android:id="@+id/txtforgot"
+        android:textColor="@color/purple"
+       />
 
 </LinearLayout>

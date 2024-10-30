@@ -1,14 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".menuleft.ShareFragment">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    android:background="@color/primary_50">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Tiêu đề chia sẻ -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tv_share_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chia sẻ với bạn bè"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="24dp" />
 
-</FrameLayout>
+    <!-- Hàng biểu tượng chia sẻ -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/icon_twitter"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_twitter"
+            android:contentDescription="Twitter"
+            android:layout_margin="8dp" />
+
+        <ImageView
+            android:id="@+id/icon_facebook"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_facebook"
+            android:contentDescription="Facebook"
+            android:layout_margin="8dp" />
+
+        <ImageView
+            android:id="@+id/icon_instagram"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_ig"
+            android:contentDescription="Instagram"
+            android:layout_margin="8dp" />
+
+        <ImageView
+            android:id="@+id/icon_zalo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_zalo"
+            android:contentDescription="Zalo"
+            android:layout_margin="8dp" />
+
+        <ImageView
+            android:id="@+id/icon_tiktok"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_tiktok"
+            android:contentDescription="TikTok"
+            android:layout_margin="8dp" />
+    </LinearLayout>
+
+    <!-- Dòng mô tả -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hãy kết nối với chúng tôi qua mạng xã hội!"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
+
+</LinearLayout>

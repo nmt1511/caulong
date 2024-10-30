@@ -31,9 +31,7 @@
         <activity android:name=".menuleft.AboutFragment"/>
         <activity android:name=".menuleft.ShareFragment"/>
         <activity android:name=".booking.Booking_yard" />
-        <activity android:name=".booking.NuocActivity" />
-        <activity android:name=".booking.FoodActivity" />
-        <activity android:name=".booking.DichVuActivity" />
+        <activity android:name=".user.SignupActivity"/>
         <activity android:name=".feedback.feedback" />
         <activity android:name=".support.support" />
     </application>

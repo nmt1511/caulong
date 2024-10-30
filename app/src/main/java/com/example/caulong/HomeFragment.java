@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.caulong.booking.Booking_yard;
-import com.example.caulong.booking.NuocActivity;
 import com.example.caulong.feedback.feedback;
 import com.example.caulong.menubottom.Account;
 import com.example.caulong.menubottom.AccountFragment;
@@ -43,7 +42,7 @@ public class HomeFragment extends Fragment {
 
         dichVuLayout.setOnClickListener(v -> {
             // Mở activity để xem dịch vụ
-            Intent intent = new Intent(getActivity(), NuocActivity.class);
+            Intent intent = new Intent(getActivity(), Booking_yard.class);
             startActivity(intent);
         });
 

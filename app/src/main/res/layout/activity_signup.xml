@@ -210,7 +210,6 @@
                 android:drawableTint="@color/primary_600"
                 android:fontFamily="@font/quicksand_semi_bold"
                 android:hint="VD: hoanghm"
-                android:inputType="textPassword"
                 android:paddingLeft="12dp"
                 android:textSize="18sp" />
 
@@ -227,12 +226,31 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/rounded_background"
-                android:drawableTint="@color/primary_600"
+                android:drawableEnd="@drawable/eye"
                 android:fontFamily="@font/quicksand_semi_bold"
                 android:hint="@string/pass_hint"
                 android:inputType="textPassword"
                 android:paddingLeft="12dp"
                 android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_semi_bold"
+                android:text="nhập lại mật khẩu"
+                android:textSize="18sp" />
+            <EditText
+                android:id="@+id/edt_passcomfirm"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/rounded_background"
+                android:drawableEnd="@drawable/eye"
+                android:fontFamily="@font/quicksand_semi_bold"
+                android:hint="@string/pass_hint"
+                android:inputType="textPassword"
+                android:paddingLeft="12dp"
+                android:textSize="18sp" />
+
         </LinearLayout>
     </LinearLayout>
 
@@ -244,9 +262,9 @@
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/primary_600"
         android:fontFamily="@font/quicksand_semi_bold"
+        android:minHeight="32dp"
         android:paddingHorizontal="32dp"
         android:text="@string/register"
         android:textColor="@color/secondary_900"
-        android:textSize="16sp"
-        />
+        android:textSize="16sp" />
 </RelativeLayout>
