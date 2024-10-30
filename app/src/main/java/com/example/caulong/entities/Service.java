@@ -9,6 +9,9 @@ public class Service implements Serializable {
     int type_id;
     double service_price;
 
+    public Service() {
+    }
+
     public Service(int quantity, int service_id, String service_name, double service_price, int type_id) {
         super();
         this.quantity = quantity;
@@ -16,6 +19,16 @@ public class Service implements Serializable {
         this.service_name = service_name;
         this.service_price = service_price;
         this.type_id = type_id;
+    }
+
+    // Phương thức sao chép
+    public Service copy() {
+        Service copy = new Service();
+        copy.setService_id(this.service_id);
+        copy.setService_name(this.service_name);
+        copy.setService_price(this.service_price);
+        copy.setQuantity(this.quantity);
+        return copy;
     }
 
     public Service(int service_id, String service_name, double service_price) {

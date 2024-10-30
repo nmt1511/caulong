@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Caulong"
         tools:targetApi="31">
         <activity
-            android:name=".IntroActivity"
+            android:name=".user.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".user.LoginActivity" />
         <activity android:name=".MainActivity"/>
+        <activity android:name=".user.LoginActivity"/>
         <activity android:name=".booking.ServiceListActivity" />
         <activity android:name=".booking.ServiceTypeListActivity" />
         <activity android:name=".menubottom.Account"/>

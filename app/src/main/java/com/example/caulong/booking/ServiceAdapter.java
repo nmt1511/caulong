@@ -16,12 +16,17 @@ import com.example.caulong.entities.Service;
 import java.util.ArrayList;
 
 public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder> {
+    public interface OnQuantityChangeListener {
+        void onQuantityChanged();
+    }
     private ArrayList<Service> ServiceList;
     private Context context;
+    private OnQuantityChangeListener onQuantityChangeListener;
 
-    public ServiceAdapter(ArrayList<Service> serviceList, Context context){
+    public ServiceAdapter(ArrayList<Service> serviceList, Context context, OnQuantityChangeListener listener){
         this.ServiceList = serviceList;
         this.context = context;
+        this.onQuantityChangeListener = listener;
     }
 
     @Override
@@ -42,6 +47,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
             int currentQuantity = service.getQuantity();
             service.setQuantity(currentQuantity + 1);
             holder.tvQuantity.setText(String.valueOf(service.getQuantity()));
+            onQuantityChangeListener.onQuantityChanged();
         });
 
         // Thiết lập sự kiện giảm số lượng
@@ -50,6 +56,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
             if (currentQuantity > 0) {
                 service.setQuantity(currentQuantity - 1);
                 holder.tvQuantity.setText(String.valueOf(service.getQuantity()));
+                onQuantityChangeListener.onQuantityChanged();
             }
         });
     }
@@ -74,6 +81,4 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
             btnIncrease = itemView.findViewById(R.id.btn_increase);
         }
     }
-
-
 }

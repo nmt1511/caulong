@@ -73,11 +73,22 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this,"Cần điền đầy đủ thông tin!",Toast.LENGTH_SHORT).show();
                 else{
                     int userId = isUser(username,pass);
+                    int customerId = 1;
                     if(userId != -1) {
+                        Cursor cursor = db.rawQuery(
+                                "SELECT customer_id FROM Customer WHERE user_id = ?",
+                                new String[]{String.valueOf(userId)}
+                        );
+
+                        if (cursor.moveToFirst()) {
+                            customerId = cursor.getInt(0);
+                        }
+                        cursor.close();
                         //Lưu user_id vào SharedPreferences
                         SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putInt("userId",userId);
+                        editor.putInt("customerId",customerId);
                         editor.apply();
 
                         Toast.makeText(getApplication(), "Mật khẩu hợp lệ", Toast.LENGTH_LONG).show();

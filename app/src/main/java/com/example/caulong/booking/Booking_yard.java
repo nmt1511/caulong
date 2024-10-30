@@ -210,7 +210,12 @@ public class Booking_yard extends AppCompatActivity {
 
             }
         });
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
+        String currentDate = day + "/" + month + "/" + year;
         // Xử lý sự kiện xác nhận
         buttonXacNhan.setOnClickListener(v -> {
             if (selectedSet.isEmpty()) {
@@ -228,6 +233,7 @@ public class Booking_yard extends AppCompatActivity {
                 ContentValues bookingValues = new ContentValues();
                 bookingValues.put("customer_id", userId);
                 bookingValues.put("court_id", courtId);
+                bookingValues.put("present_date", currentDate);
                 bookingValues.put("booking_date", selectedDate);
                 bookingValues.put("total_time", tongTienGio);
                 //bookingValues.put("total_item", tongTienDV);

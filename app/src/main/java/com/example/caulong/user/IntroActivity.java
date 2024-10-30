@@ -1,4 +1,4 @@
-package com.example.caulong;
+package com.example.caulong.user;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.VideoView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.caulong.user.LoginActivity;
+import com.example.caulong.R;
 
 public class IntroActivity extends AppCompatActivity {
 
