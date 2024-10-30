@@ -24,6 +24,7 @@ import java.util.Calendar;
 
 public class ServiceListActivity extends AppCompatActivity implements ServiceAdapter.OnQuantityChangeListener{
     private int typeid;
+    private long booking_id;
     private TextView tvTotalPrice;
     private Button btnAddToCart, btnshowCart;
     private RecyclerView recyclerView;
@@ -48,6 +49,7 @@ public class ServiceListActivity extends AppCompatActivity implements ServiceAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
         typeid = getIntent().getIntExtra("type_id",-1);
+        booking_id = getIntent().getLongExtra("booking_id",-1);
         init();
         loadItems(typeid);
         updateTotalPrice();
@@ -154,31 +156,31 @@ public class ServiceListActivity extends AppCompatActivity implements ServiceAda
         }
         return total;
     }
-    private int getbooking_id(){
-        db = helper.getReadableDatabase();
-        SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-        int customerId = preferences.getInt("customerId", -1);
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH) + 1; // Tháng bắt đầu từ 0
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        String currentDate = day + "/" + month + "/" + year;
-        //lấy booking_id
-        Cursor cursor = db.rawQuery(
-                "SELECT booking_id FROM Booking WHERE customer_id = ? AND present_date = ?",
-                new String[]{String.valueOf(customerId),currentDate}
-        );
-        if (cursor.moveToFirst()) {
-            int bookingId = cursor.getInt(0);
-            return bookingId;
-        }
-        cursor.close();
-        return -1;
-    }
+//    private int getbooking_id(){
+//        db = helper.getReadableDatabase();
+//        SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+//        int customerId = preferences.getInt("customerId", -1);
+//        Calendar calendar = Calendar.getInstance();
+//        int year = calendar.get(Calendar.YEAR);
+//        int month = calendar.get(Calendar.MONTH) + 1; // Tháng bắt đầu từ 0
+//        int day = calendar.get(Calendar.DAY_OF_MONTH);
+//        String currentDate = day + "/" + month + "/" + year;
+//        //lấy booking_id
+//        Cursor cursor = db.rawQuery(
+//                "SELECT booking_id FROM Booking WHERE customer_id = ? AND present_date = ?",
+//                new String[]{String.valueOf(customerId),currentDate}
+//        );
+//        if (cursor.moveToFirst()) {
+//            int bookingId = cursor.getInt(0);
+//            return bookingId;
+//        }
+//        cursor.close();
+//        return -1;
+//    }
     private void confirmOrder() {
         db = helper.getReadableDatabase();
         double totalItem=0;
-        int bookingId = getbooking_id();
+        long bookingId = booking_id;
         for (Service service : cartList) {
             if (service.getQuantity() > 0) {
                 int serviceId = service.getService_id();

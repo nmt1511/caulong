@@ -4,6 +4,7 @@ package com.example.caulong.booking;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -41,11 +42,10 @@ public class Booking_yard extends AppCompatActivity {
 
     private Spinner spinnerSan;
     private GridView gridViewGio;
-    private Button buttonChonNgay, buttonXacNhan, buttonDichVuKhac; // Thêm buttonDichVuKhac
+    private Button buttonChonNgay, buttonXacNhan; // Thêm buttonDichVuKhac
     private TextView textViewNgay, textViewGiaSan;
     private EditText edtSelectedDate;
     private String selectedDate = ""; // Lưu ngày đã chọn
-    private static final int GIA_TIEN_MOI_GIO = 25000;
     ArrayList<court> CourtList = new ArrayList<court>();
     ArrayAdapter<court> adapter_court;
     int posSpinner = -1;
@@ -66,7 +66,7 @@ public class Booking_yard extends AppCompatActivity {
         buttonXacNhan = findViewById(R.id.btnxacnhan);
         textViewNgay = findViewById(R.id.textview_ngay);
         textViewGiaSan = findViewById(R.id.txtGiaSan);
-        buttonDichVuKhac = findViewById(R.id.btn_dichvu_khac);
+        //buttonDichVuKhac = findViewById(R.id.btn_dichvu_khac);
         edtSelectedDate = findViewById(R.id.edtSelectedDate);
     }
 
@@ -265,6 +265,14 @@ public class Booking_yard extends AppCompatActivity {
                         .setTitle("Thông tin đặt sân")
                         .setMessage("Ngày: " + selectedDate + "\nSân: " + CourtList.get(posSpinner).getCourt_name() +
                                 "\nGiờ: " + selectedTimeNames.toString() + "\nTổng tiền: " + formatCurrency((int) tongTienGio))
+                        .setNegativeButton("Dịch vụ khác", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(Booking_yard.this, ServiceTypeListActivity.class);
+                                intent.putExtra("booking_id",bookingId);
+                                startActivity(intent);
+                            }
+                        })
                         .setPositiveButton("OK", null)
                         .show();
                 // Cập nhật màu đỏ cho các ô giờ đã chọn
@@ -279,13 +287,13 @@ public class Booking_yard extends AppCompatActivity {
         });
 
         // Xử lý sự kiện cho nút "Dịch Vụ Khác"
-        buttonDichVuKhac.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Booking_yard.this, ServiceTypeListActivity.class);
-                startActivity(intent);
-            }
-        });
+//        buttonDichVuKhac.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(Booking_yard.this, ServiceTypeListActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 

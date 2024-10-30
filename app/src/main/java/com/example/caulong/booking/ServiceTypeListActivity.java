@@ -21,6 +21,7 @@ public class ServiceTypeListActivity extends AppCompatActivity {
     private ServiceTypeAdapter adapter;
     private List<ServiceType> serviceTypeList = new ArrayList<>();
     private SQLiteDatabase db;
+    private long booking_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +29,14 @@ public class ServiceTypeListActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        booking_id = getIntent().getLongExtra("booking_id",-1);
         loadServiceTypes();
         adapter.setOnItemClickListener(new ServiceTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(ServiceType serviceType) {
                 Intent intent = new Intent(ServiceTypeListActivity.this, ServiceListActivity.class);
                 intent.putExtra("type_id", serviceType.getType_id());
+                intent.putExtra("booking_id",booking_id);
                 startActivity(intent);
             }
         });

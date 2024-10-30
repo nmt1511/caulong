@@ -61,6 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
+            android:minHeight="48dp"
             android:hint="--/--/----"/>
     </LinearLayout>
 
@@ -88,24 +89,24 @@
         android:numColumns="4"
         android:padding="16dp"
         android:verticalSpacing="20dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_dichvu_khac"
+        app:layout_constraintBottom_toTopOf="@id/layout_total_and_confirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinner_san" />
 
     <!-- Nút Dịch Vụ Khác -->
-    <Button
-        android:id="@+id/btn_dichvu_khac"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dịch Vụ Khác"
-        android:textSize="14sp"
-        android:textColor="@color/white"
-        android:padding="12dp"
-        android:backgroundTint="@color/primary_500"
-        app:layout_constraintBottom_toTopOf="@id/layout_total_and_confirm"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="32dp" />
+<!--    <Button-->
+<!--        android:id="@+id/btn_dichvu_khac"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Dịch Vụ Khác"-->
+<!--        android:textSize="14sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:padding="12dp"-->
+<!--        android:backgroundTint="@color/primary_500"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/layout_total_and_confirm"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginHorizontal="32dp" />-->
 
     <!-- Layout Tổng Tiền và Nút Xác Nhận -->
     <LinearLayout
