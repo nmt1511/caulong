@@ -83,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplication(), "Mật khẩu hợp lệ", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }else {
                         Toast.makeText(getApplication(), "Mật khẩu không hợp lệ", Toast.LENGTH_LONG).show();
                         edtUser.requestFocus();
