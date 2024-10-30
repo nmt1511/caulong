@@ -36,13 +36,13 @@ public class ServiceListActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_service);
-        typeid = getIntent().getIntExtra("type_id",-1);
-        init();
+        setContentView(R.layout.activity_drink);
+//        typeid = getIntent().getIntExtra("type_id",-1);
+//        init();
         //serviceList = new ArrayList<>();
 //        serviceAdapter = new ServiceAdapter(serviceList);
 //        recyclerView.setAdapter(serviceAdapter);
-        loadItems(typeid);
+//        loadItems(typeid);
     }
     private void loadItems(int typeId) {
         DataDatSan helper = new DataDatSan(this);

@@ -28,12 +28,15 @@
     android:textColor="@color/text_primary"/> <!-- Màu chữ -->
 
     <Button
-    android:id="@+id/btn_decrease"
-    android:layout_width="60dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/button_background_drink"
+        android:id="@+id/btn_decrease"
+        android:layout_width="60dp"
+        android:layout_height="48dp"
+        android:background="@drawable/button_background_drink"
         android:text="-"
-        android:textColor="@color/white"/> <!-- Màu chữ -->
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.1"/>
 
     <TextView
     android:id="@+id/tv_quantity"
@@ -45,10 +48,13 @@
     android:textColor="@color/text_primary"/> <!-- Màu chữ -->
 
     <Button
-    android:id="@+id/btn_increase"
-    android:layout_width="60dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/button_background_drink"
+        android:id="@+id/btn_increase"
+        android:layout_width="60dp"
+        android:layout_height="48dp"
+        android:background="@drawable/button_background_drink"
         android:text="+"
-        android:textColor="@color/white"/> <!-- Màu chữ -->
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.1"/>
         </LinearLayout>
