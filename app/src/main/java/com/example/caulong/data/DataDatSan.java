@@ -95,6 +95,7 @@ public class DataDatSan extends SQLiteOpenHelper {
                 "booking_date TEXT, " +
                 "total_time REAL, " +
                 "total_item REAL, " +
+                "status TEXT, " +
                 "FOREIGN KEY(customer_id) REFERENCES Customer(customer_id), " +
                 "FOREIGN KEY(court_id) REFERENCES Court(court_id))");
 

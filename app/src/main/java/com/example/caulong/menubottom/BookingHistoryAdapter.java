@@ -31,9 +31,15 @@ public class BookingHistoryAdapter extends RecyclerView.Adapter<BookingHistoryAd
     public void onBindViewHolder(@NonNull BookingHistoryViewHolder holder, int position) {
         BookingHistory bookingHistory = bookingHistories.get(position);
         holder.courtName.setText(bookingHistory.getCourtName());
-        holder.date.setText(bookingHistory.getDate());
-        holder.time.setText(bookingHistory.getTime());
-        holder.status.setText(bookingHistory.getStatus());
+        holder.present_date.setText("Ngày đặt sân: " +bookingHistory.getPresentdate());
+        holder.booking_date.setText("Ngày chơi: "+ bookingHistory.getBookingDate());
+        // Hiển thị danh sách thời gian đã đặt
+        StringBuilder timesText = new StringBuilder();
+        for (String time : bookingHistory.getTimes()) {
+            timesText.append(time).append(", ");
+        }
+        holder.time.setText("Thời gian đã đặt: " + (timesText.length() > 0 ? timesText.substring(0, timesText.length() - 2) : ""));
+        holder.status.setText("Tình trạng: "+bookingHistory.getStatus());
     }
 
     @Override
@@ -43,14 +49,16 @@ public class BookingHistoryAdapter extends RecyclerView.Adapter<BookingHistoryAd
 
     static class BookingHistoryViewHolder extends RecyclerView.ViewHolder {
         TextView courtName;
-        TextView date;
+        TextView present_date;
+        TextView booking_date;
         TextView time;
         TextView status;
 
         BookingHistoryViewHolder(@NonNull View itemView) {
             super(itemView);
             courtName = itemView.findViewById(R.id.text_view_court_name);
-            date = itemView.findViewById(R.id.text_view_date);
+            present_date = itemView.findViewById(R.id.text_view_presentdate);
+            booking_date = itemView.findViewById(R.id.text_view_bookingdate);
             time = itemView.findViewById(R.id.text_view_time);
             status = itemView.findViewById(R.id.text_view_status);
         }

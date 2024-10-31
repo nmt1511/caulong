@@ -236,7 +236,7 @@ public class Booking_yard extends AppCompatActivity {
                 bookingValues.put("present_date", currentDate);
                 bookingValues.put("booking_date", selectedDate);
                 bookingValues.put("total_time", tongTienGio);
-                //bookingValues.put("total_item", tongTienDV);
+                bookingValues.put("status", "Đã đặt");
                 long bookingId = db.insert("Booking", null, bookingValues);
 
                 // Lưu từng giờ vào bảng Booking_time

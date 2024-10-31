@@ -236,7 +236,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand_semi_bold"
-                android:text="nhập lại mật khẩu"
+                android:text="Nhập lại mật khẩu"
                 android:textSize="18sp" />
             <EditText
                 android:id="@+id/edt_passcomfirm"
@@ -262,7 +262,7 @@
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/primary_600"
         android:fontFamily="@font/quicksand_semi_bold"
-        android:minHeight="32dp"
+        android:minHeight="48dp"
         android:paddingHorizontal="32dp"
         android:text="@string/register"
         android:textColor="@color/secondary_900"
