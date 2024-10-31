@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -48,6 +49,15 @@ public class EditInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveUserInfo();
+            }
+        });
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Kết thúc Activity hiện tại
+                // Intent intent = new Intent(EditInfoActivity.this, PreviousActivity.class);
+                // startActivity(intent);
             }
         });
     }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -55,6 +56,15 @@ public class InfoActivity extends AppCompatActivity {
                 Intent intent = new Intent(InfoActivity.this, EditInfoActivity.class);
                 intent.putExtra("user_id", userId); // Truyền userId
                 startActivity(intent);
+            }
+        });
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Kết thúc Activity hiện tại
+                // Intent intent = new Intent(EditInfoActivity.this, PreviousActivity.class);
+                // startActivity(intent);
             }
         });
     }

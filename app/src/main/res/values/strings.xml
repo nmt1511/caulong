@@ -13,10 +13,10 @@
     <string name="share">Chia sẻ</string>
     <string name="home">Trang chủ</string>
     <string name="user">Cá Nhân</string>
-    <string name="noti">Thông Báo</string>
+    <string name="noti">Giải Đấu</string>
     <string name="history">Lịch sử</string>
 
-    <!--  Các string label và hint dùng khi đăng ký, đăng nhập,... -->
+    <!--  Các string label và hint dùng khi đăng ký -->
     <string name="phone_text">Số điện thoại</string>
     <string name="pass_label">Mật khẩu</string>
     <string name="pass_hint">VD: 123456(nhiều hơn 6 số)</string>
