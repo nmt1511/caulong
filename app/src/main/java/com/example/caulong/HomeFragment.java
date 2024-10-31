@@ -17,10 +17,10 @@ import android.widget.Toast;
 
 import com.example.caulong.booking.Booking_yard;
 import com.example.caulong.data.DataDatSan;
-import com.example.caulong.feedback.feedback;
+import com.example.caulong.menuleft.feedback;
 import com.example.caulong.menubottom.Account;
-import com.example.caulong.menubottom.AccountFragment;
-import com.example.caulong.support.support;
+import com.example.caulong.menuleft.support;
+import com.example.caulong.user.InfoActivity;
 import com.example.caulong.user.LoginActivity;
 
 public class HomeFragment extends Fragment {
@@ -82,7 +82,7 @@ public class HomeFragment extends Fragment {
 
         thongTinCaNhanLayout.setOnClickListener(v -> {
             // Mở activity để xem thông tin cá nhân
-            Intent intent = new Intent(getActivity(), Account.class);
+            Intent intent = new Intent(getActivity(), InfoActivity.class);
             startActivity(intent);
         });
 

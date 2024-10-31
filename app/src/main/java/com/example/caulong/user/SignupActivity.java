@@ -33,6 +33,7 @@ public class SignupActivity extends AppCompatActivity{
         dbDatSan = new DataDatSan(this);
         db = dbDatSan.getWritableDatabase();
         init();
+        rdNam.setChecked(true);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,7 +169,6 @@ public class SignupActivity extends AppCompatActivity{
                         customerValues.put("user_id", userId);
 
                         long customerId = db.insert("Customer", null, customerValues); // Thêm vào bảng Customer
-
                         if (customerId != -1) {
                             // Đăng ký thành công
                             Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
@@ -186,7 +186,5 @@ public class SignupActivity extends AppCompatActivity{
         }
 
     }
-
-
 
 }

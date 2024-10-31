@@ -30,7 +30,11 @@
             android:padding="10dp"/>
 
     </RelativeLayout>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_header"
+        android:fillViewport="true">
     <LinearLayout
 
         android:id="@+id/ll_info"
@@ -253,12 +257,12 @@
 
         </LinearLayout>
     </LinearLayout>
-
+    </ScrollView>
     <Button
         android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll_info"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/primary_600"
         android:fontFamily="@font/quicksand_semi_bold"

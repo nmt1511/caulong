@@ -33,8 +33,10 @@
         <activity android:name=".menuleft.ShareFragment"/>
         <activity android:name=".booking.Booking_yard" />
         <activity android:name=".user.SignupActivity"/>
-        <activity android:name=".feedback.feedback" />
-        <activity android:name=".support.support" />
+        <activity android:name=".menuleft.feedback" />
+        <activity android:name=".menuleft.support" />
+        <activity android:name=".user.InfoActivity"/>
+        <activity android:name=".user.EditInfoActivity"/>
     </application>
 
 </manifest>

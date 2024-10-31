@@ -19,8 +19,8 @@
     <!--  Các string label và hint dùng khi đăng ký, đăng nhập,... -->
     <string name="phone_text">Số điện thoại</string>
     <string name="pass_label">Mật khẩu</string>
-    <string name="pass_hint">VD: 123456789aZ</string>
-    <string name="hint_phone">VD: 0123456789</string>
+    <string name="pass_hint">VD: 123456(nhiều hơn 6 số)</string>
+    <string name="hint_phone">VD: 0123456789(10-11 chữ số)</string>
     <string name="email_text">Email</string>
     <string name="hint_email">VD: thuan@gmail.com</string>
     <string name="name_text">Họ và tên</string>
