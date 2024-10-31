@@ -3,14 +3,14 @@ package com.example.caulong.menubottom;
 import java.util.List;
 
 public class BookingHistory {
-    private int booking_id;
+    private long booking_id;
     private String courtName;
     private String presentdate;
     private String bookingDate;
     private String status;
     private List<String> times;
 
-    public BookingHistory(int booking_id, String courtName, String presentdate, String bookingDate, String status, List<String> times) {
+    public BookingHistory(long booking_id, String courtName, String presentdate, String bookingDate, String status, List<String> times) {
         this.booking_id = booking_id;
         this.bookingDate = bookingDate;
         this.courtName = courtName;
@@ -19,11 +19,11 @@ public class BookingHistory {
         this.times = times;
     }
 
-    public int getBooking_id() {
+    public long getBooking_id() {
         return booking_id;
     }
 
-    public void setBooking_id(int booking_id) {
+    public void setBooking_id(long booking_id) {
         this.booking_id = booking_id;
     }
 
