@@ -19,13 +19,19 @@ public class IntroActivity extends AppCompatActivity {
         VideoView videoView = findViewById(R.id.videoView);
 
         // Lấy URI của video từ thư mục raw
-        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.introo); // Đổi intro_video thành tên file video của bạn
+        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.intro); // Đổi intro_video thành tên file video của bạn
         videoView.setVideoURI(videoUri);
 
         // Khi video phát xong, chuyển sang LoginActivity
         videoView.setOnCompletionListener(mp -> {
             startActivity(new Intent(IntroActivity.this, LoginActivity.class));
             finish(); // Đóng IntroActivity để người dùng không quay lại được
+        });
+
+        videoView.setOnCompletionListener(mp -> {
+            startActivity(new Intent(IntroActivity.this, LoginActivity.class));
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            finish();
         });
 
         // Bắt đầu phát video
