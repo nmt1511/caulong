@@ -1,0 +1,123 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Thông tin đơn -->
+    <TextView
+        android:id="@+id/order_info_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thông tin đơn hàng"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/order_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chi tiết đơn hàng sẽ hiển thị ở đây"
+        android:padding="8dp" />
+
+    <!-- Phương thức thanh toán -->
+    <TextView
+        android:id="@+id/payment_method_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phương thức thanh toán"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+    <!-- Icon thanh toán trực tiếp -->
+    <LinearLayout
+        android:id="@+id/thanh_toan_tien_tt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+
+        <ImageView
+            android:id="@+id/thanh_toan_tt"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_money" />
+
+        <TextView
+            android:id="@+id/tx_thanh_toan_tt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thanh toán tại quầy"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+    <!-- Icon ZaloPay -->
+    <LinearLayout
+        android:id="@+id/zalo_pay_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+
+        <ImageView
+            android:id="@+id/zalo_pay_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_zalo" />
+
+        <TextView
+            android:id="@+id/zalo_pay_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zalo Pay"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+    <!-- Icon momo -->
+    <LinearLayout
+        android:id="@+id/momo_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+
+        <ImageView
+            android:id="@+id/momo_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_momo" />
+
+        <TextView
+            android:id="@+id/tx_momo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Momo"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- Nút Thanh Toán -->
+    <Button
+        android:id="@+id/btn_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thanh Toán"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/primary_100" />
+</LinearLayout>

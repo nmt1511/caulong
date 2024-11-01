@@ -33,18 +33,39 @@
             android:src="@drawable/ic_profile" />
     </RelativeLayout>
 
-
-
-    <!-- Search Bar -->
-    <EditText
+    <!-- ViewFlipper cho quảng cáo -->
+    <ViewFlipper
+        android:id="@+id/advertisementFlipper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Tìm kiếm dịch vụ"
-        android:background="@drawable/rounded_background"
-        android:drawableStart="@drawable/search"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_height="200dp"
+        android:autoStart="true"
+        android:flipInterval="3000"
+        android:inAnimation="@anim/in_from_right"
+        android:outAnimation="@anim/out_to_left"
+        android:layout_marginBottom="16dp">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="Quảng cáo 1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/banner2"
+            android:scaleType="centerCrop"
+            android:contentDescription="Quảng cáo 2" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/banner3"
+            android:scaleType="centerCrop"
+            android:contentDescription="Quảng cáo 3" />
+
+    </ViewFlipper>
     <!-- Categories (Covid, Doctor, Medicine, Hospital) -->
     <TableLayout
         android:id="@+id/table1"

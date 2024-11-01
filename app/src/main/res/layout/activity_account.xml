@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/off_white">
+    android:background="@color/primary_100">
 
     <!-- Back button -->
     <ImageButton
@@ -28,12 +27,22 @@
         android:layout_marginTop="24dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_profile"
-
         android:elevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnBack" />
+
+    <Button
+        android:id="@+id/btn_Doi_Anh"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:text="Đổi ảnh đại diện"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgProfile" />
 
     <TextView
         android:id="@+id/txtTitle"
@@ -43,7 +52,7 @@
         android:textSize="24sp"
         android:textColor="@color/text_primary"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/imgProfile"
+        app:layout_constraintTop_toBottomOf="@id/btn_Doi_Anh"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp" />
