@@ -8,6 +8,7 @@ public class Service implements Serializable {
     int quantity;
     int type_id;
     double service_price;
+    double total_price;
 
     public Service() {
     }
@@ -19,6 +20,14 @@ public class Service implements Serializable {
         this.service_name = service_name;
         this.service_price = service_price;
         this.type_id = type_id;
+    }
+
+    public double getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(double total_price) {
+        this.total_price = total_price;
     }
 
     // Phương thức sao chép
@@ -35,6 +44,12 @@ public class Service implements Serializable {
         this.service_id = service_id;
         this.service_name = service_name;
         this.service_price = service_price;
+    }
+    public Service(String service_name, int quantity,double service_price, double total_price) {
+        this.service_name = service_name;
+        this.service_price = service_price;
+        this.quantity = quantity;
+        this.total_price = total_price;
     }
 
     public int getQuantity() {

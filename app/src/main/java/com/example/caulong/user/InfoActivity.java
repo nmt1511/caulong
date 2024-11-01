@@ -39,7 +39,7 @@ public class InfoActivity extends AppCompatActivity {
 
         // Lấy user_id từ SharedPreferences
         // Trong InfoActivity.java, kiểm tra giá trị userId
-        SharedPreferences preferences = this.getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         int userId = preferences.getInt("userId", -1);
         Log.d("UserID", "userId: " + userId);
 
@@ -71,7 +71,7 @@ public class InfoActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        SharedPreferences preferences = this.getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         int userId = preferences.getInt("userId", -1);
         Log.d("UserID", "userId: " + userId);
         super.onResume();

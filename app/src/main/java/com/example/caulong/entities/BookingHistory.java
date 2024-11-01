@@ -1,4 +1,4 @@
-package com.example.caulong.menubottom;
+package com.example.caulong.entities;
 
 import java.util.List;
 

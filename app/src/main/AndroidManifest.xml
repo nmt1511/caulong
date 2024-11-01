@@ -25,6 +25,7 @@
         <activity android:name=".user.LoginActivity"/>
         <activity android:name=".booking.ServiceListActivity" />
         <activity android:name=".booking.ServiceTypeListActivity" />
+        <activity android:name=".booking.BookingDetailActivity" />
         <activity android:name=".menubottom.Account"/>
         <activity android:name=".menubottom.AccountFragment"/>
         <activity android:name=".menubottom.HistoryFragment"/>

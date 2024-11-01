@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.caulong.R;
 import com.example.caulong.booking.BookingDetailActivity;
-import com.example.caulong.booking.Booking_yard;
 import com.example.caulong.booking.ServiceTypeListActivity;
+import com.example.caulong.entities.BookingHistory;
 
 import java.util.List;
 

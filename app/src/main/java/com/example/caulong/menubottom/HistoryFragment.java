@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.caulong.R;
 import com.example.caulong.data.DataDatSan;
+import com.example.caulong.entities.BookingHistory;
 
 import java.util.ArrayList;
 import java.util.List;
