@@ -7,5 +7,5 @@
         android:title="Xem chi tiết" />
     <item
         android:id="@+id/menu_delete"
-        android:title="Xóa" />
+        android:title="Hủy sân" />
 </menu>

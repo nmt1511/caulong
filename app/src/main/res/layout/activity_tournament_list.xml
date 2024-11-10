@@ -1,0 +1,54 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_50">
+
+    <!-- Main content layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header Title -->
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danh Sách Giải Đấu"
+            android:textSize="24sp"
+            android:textColor="@color/primary_900"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:padding="16dp"
+            android:elevation="4dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary_200"
+            android:background="@drawable/rounded_background"/>
+
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/d_rvServices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary_50"
+            android:background="@drawable/rounded_background"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="2dp"/>
+    </LinearLayout>
+
+    <!-- Button in the bottom right corner -->
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="Thêm"
+        android:textColor="@color/white"
+        android:elevation="15dp"
+        android:padding="12dp"
+        android:background="@drawable/dialog_background"/>
+</FrameLayout>

@@ -14,7 +14,7 @@
         android:layout_marginBottom="8dp">
 
         <TextView
-            android:id="@+id/tvGreeting"
+            android:id="@+id/ad_tvGreeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello,\nThuan"
@@ -44,7 +44,7 @@
         <TableRow android:id="@+id/row1">
 
             <LinearLayout
-                android:id="@+id/dat_san"
+                android:id="@+id/QL_datsan"
                 style="@style/itemrow">
 
                 <ImageView
@@ -56,7 +56,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="đặt sân"
+                    android:text="Đặt sân"
                     android:textSize="14sp"
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
@@ -89,12 +89,12 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:src="@drawable/history"
-                    android:contentDescription="lịch sử" />
+                    android:contentDescription="Đánh giá" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="lịch sử"
+                    android:text="Đánh giá"
                     android:textSize="14sp"
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
@@ -103,19 +103,19 @@
 
         <TableRow android:id="@+id/row2">
             <LinearLayout
-                android:id="@+id/thong_tin_ca_nhan"
+                android:id="@+id/Info_Customer"
                 style="@style/itemrow">
 
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:src="@drawable/user"
-                    android:contentDescription="Thông tin cá nhân" />
+                    android:contentDescription="Khách hàng" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thông tin"
+                    android:text="Khách hàng"
                     android:textSize="14sp"
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
@@ -140,19 +140,19 @@
                     android:gravity="center" />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/ho_tro"
+                android:id="@+id/dang_xuat"
                 style="@style/itemrow">
 
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/baseline_info_24"
+                    android:src="@drawable/baseline_logout_24"
                     android:contentDescription="Hỗ trợ" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hỗ trợ"
+                    android:text="Đăng xuất"
                     android:textSize="14sp"
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
@@ -160,7 +160,5 @@
 
         </TableRow>
     </TableLayout>
-
-
 
 </LinearLayout>

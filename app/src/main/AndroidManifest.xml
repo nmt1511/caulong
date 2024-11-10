@@ -22,6 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".admin.AdminActivity"/>
+        <activity android:name=".admin.BookingYard_Management"/>
+        <activity android:name=".admin.Tournament_List"/>
         <activity android:name=".user.LoginActivity"/>
         <activity android:name=".booking.ServiceListActivity" />
         <activity android:name=".booking.ServiceTypeListActivity" />

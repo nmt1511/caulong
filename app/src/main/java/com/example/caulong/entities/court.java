@@ -15,6 +15,11 @@ public class court implements Serializable {
         this.status = status;
     }
 
+    public court(String court_id, String court_name) {
+        this.court_id = court_id;
+        this.court_name = court_name;
+    }
+
     public String getCourt_id() {
         return court_id;
     }

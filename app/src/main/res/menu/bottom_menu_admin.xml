@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Booked"
+        android:title="Đã đặt"
+        android:icon="@drawable/badminton"/>
+
+    <item
+        android:id="@+id/Cancel"
+        android:title="Chờ hủy"
+        android:icon="@drawable/badminton"/>
+
+    <item
+        android:id="@+id/Canceled"
+        android:title="Đã hủy"
+        android:icon="@drawable/badminton"/>
+
+    <item
+        android:id="@+id/complete"
+        android:title="Hoàn thành"
+        android:icon="@drawable/badminton"/>
+</menu>

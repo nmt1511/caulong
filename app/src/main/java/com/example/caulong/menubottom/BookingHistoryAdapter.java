@@ -1,5 +1,6 @@
 package com.example.caulong.menubottom;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -7,16 +8,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.caulong.R;
 import com.example.caulong.booking.BookingDetailActivity;
 import com.example.caulong.booking.ServiceTypeListActivity;
+import com.example.caulong.data.DataDatSan;
 import com.example.caulong.entities.BookingHistory;
 
 import java.util.List;
@@ -49,6 +53,13 @@ public class BookingHistoryAdapter extends RecyclerView.Adapter<BookingHistoryAd
         }
         holder.time.setText("Thời gian đã đặt: " + (timesText.length() > 0 ? timesText.substring(0, timesText.length() - 2) : ""));
         holder.status.setText("Tình trạng: "+bookingHistory.getStatus());
+        if(bookingHistory.getStatus().equals("Chờ hủy"))
+            holder.status.setTextColor(ContextCompat.getColor(holder.status.getContext(), R.color.notice_color));
+        else if(bookingHistory.getStatus().equals("Đã hủy"))
+            holder.status.setTextColor(ContextCompat.getColor(holder.status.getContext(), R.color.red));
+        else
+            holder.status.setTextColor(ContextCompat.getColor(holder.status.getContext(), R.color.primary));
+
     }
 
     @Override
@@ -97,10 +108,58 @@ public class BookingHistoryAdapter extends RecyclerView.Adapter<BookingHistoryAd
                 context.startActivity(intent);
                 return true;
             } else if (item.getItemId() == R.id.menu_delete) {
-                Toast.makeText(context, "Xóa booking ID: " + bookingId, Toast.LENGTH_SHORT).show();
+                ConfirmCancel(bookingId, context);
                 return true;
             }
             return false;
         }
     }
+
+    private void ConfirmCancel(long bookingID, Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View dialogView = inflater.inflate(R.layout.dialog_confirm_cancelbooking, null);
+        builder.setView(dialogView);
+
+        Button btnCancel = dialogView.findViewById(R.id.btnCancel);
+        Button btnConfirm = dialogView.findViewById(R.id.btnConfirm);
+
+        AlertDialog alertDialog = builder.create();
+
+        btnCancel.setOnClickListener(v -> alertDialog.dismiss());
+
+        btnConfirm.setOnClickListener(v -> {
+            DataDatSan dbHelper = new DataDatSan(context);
+            boolean isUpdated = dbHelper.updateBookingStatus(bookingID, "Chờ hủy");
+            if (isUpdated) {
+                Toast.makeText(context,"Đang trong danh sách chờ hủy!", Toast.LENGTH_SHORT).show();
+                if (onDataChangeListener != null) {
+                    onDataChangeListener.onDataChanged();  // Gọi callback để cập nhật dữ liệu
+                }
+            } else {
+                Toast.makeText(context, "Hủy thất bại!", Toast.LENGTH_SHORT).show();
+            }
+            alertDialog.dismiss();
+        });
+
+        alertDialog.show();
+    }
+
+    public void updateData(List<BookingHistory> newBookingHistories) {
+        this.bookingHistories.clear();
+        this.bookingHistories.addAll(newBookingHistories);
+        notifyDataSetChanged();
+    }
+
+    public interface OnDataChangeListener {
+        void onDataChanged();
+    }
+
+    private OnDataChangeListener onDataChangeListener;
+
+    public void setOnDataChangeListener(OnDataChangeListener listener) {
+        this.onDataChangeListener = listener;
+    }
+
+
 }

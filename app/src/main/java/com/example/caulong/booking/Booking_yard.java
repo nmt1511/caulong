@@ -227,11 +227,11 @@ public class Booking_yard extends AppCompatActivity {
             courtPrice = CourtList.get(posSpinner).getPrice();
             double tongTienGio = totalTimeSelected * courtPrice;
             SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-            int userId = preferences.getInt("userId", -1);  // -1 if not logged in
-            if (userId != -1) {
+            int customerId = preferences.getInt("customerId", -1);  // -1 if not logged in
+            if (customerId != -1) {
                 // Lưu vào bảng Booking
                 ContentValues bookingValues = new ContentValues();
-                bookingValues.put("customer_id", userId);
+                bookingValues.put("customer_id", customerId);
                 bookingValues.put("court_id", courtId);
                 bookingValues.put("present_date", currentDate);
                 bookingValues.put("booking_date", selectedDate);

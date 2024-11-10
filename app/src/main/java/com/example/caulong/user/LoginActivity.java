@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.caulong.MainActivity;
 import com.example.caulong.R;
+import com.example.caulong.admin.AdminActivity;
 import com.example.caulong.data.DataDatSan;
 
 public class LoginActivity extends AppCompatActivity {
@@ -49,18 +50,22 @@ public class LoginActivity extends AppCompatActivity {
         txtReg = findViewById(R.id.txtsignup);
     }
 
-    private int isUser(String user, String pass){
+    private int[] isUser(String user, String pass){
         try{
             DataDatSan helper = new DataDatSan(this);
             db = helper.getReadableDatabase();
-            Cursor cursor = db.rawQuery("select * from User where username=? and password=?", new String[]{user,pass});
+            Cursor cursor = db.rawQuery("select user_id, role from User where username=? and password=?", new String[]{user,pass});
             if(cursor.moveToFirst()){
-                return cursor.getInt(0);
+                int userId = cursor.getInt(0);
+                int role = cursor.getInt(1); // role là 0 cho customer và 1 cho admin
+                cursor.close();
+                return new int[]{userId, role};
             }
+            cursor.close();
         }catch (Exception ex){
             Toast.makeText(this, "Lỗi hệ thống ", Toast.LENGTH_LONG).show();
         }
-        return -1;
+        return new int[]{-1, -1};
     }
 
     private void initListener(){
@@ -72,30 +77,50 @@ public class LoginActivity extends AppCompatActivity {
                 if(username.equals("")|| pass.equals(""))
                     Toast.makeText(LoginActivity.this,"Cần điền đầy đủ thông tin!",Toast.LENGTH_SHORT).show();
                 else{
-                    int userId = isUser(username,pass);
-                    int customerId = 1;
+                    int[] userInfo = isUser(username,pass);
+                    int userId = userInfo[0];
+                    int role = userInfo[1];
                     if(userId != -1) {
-                        Cursor cursor = db.rawQuery(
-                                "SELECT customer_id FROM Customer WHERE user_id = ?",
-                                new String[]{String.valueOf(userId)}
-                        );
-
-                        if (cursor.moveToFirst()) {
-                            customerId = cursor.getInt(0);
+                        int customerId = -1;
+                        int adminId = -1;
+                        if(role == 0){ //Customer
+                            Cursor cursor = db.rawQuery(
+                                    "SELECT customer_id FROM Customer WHERE user_id = ?",
+                                    new String[]{String.valueOf(userId)}
+                            );
+                            if (cursor.moveToFirst()) {
+                                customerId = cursor.getInt(0);
+                            }
+                            cursor.close();
+                        } else if (role == 1) { // Vai trò Admin
+                            Cursor cursor = db.rawQuery("SELECT admin_id FROM Admin WHERE user_id = ?", new String[]{String.valueOf(userId)});
+                            if (cursor.moveToFirst()) {
+                                adminId = cursor.getInt(0);
+                            }
+                            cursor.close();
                         }
-                        cursor.close();
+
                         //Lưu user_id vào SharedPreferences
                         SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putInt("userId",userId);
-                        editor.putInt("customerId",customerId);
+                        //editor.putInt("role", role);
+                        if (role == 0) {
+                            editor.putInt("customerId", customerId);
+                            Toast.makeText(getApplication(), "Mật khẩu hợp lệ", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else if (role == 1) {
+                            editor.putInt("adminId", adminId);
+                            Toast.makeText(getApplication(), "Mật khẩu hợp lệ", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                         editor.apply();
-
-                        Toast.makeText(getApplication(), "Mật khẩu hợp lệ", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }else {
+                    }
+                    else {
                         Toast.makeText(getApplication(), "Mật khẩu không hợp lệ", Toast.LENGTH_LONG).show();
                         edtUser.requestFocus();
                     }

@@ -1,6 +1,10 @@
 package com.example.caulong.menuleft;
 
 
+import android.content.ContentValues;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +21,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.caulong.R;
+import com.example.caulong.data.DataDatSan;
+import com.example.caulong.entities.Feedback;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class feedback extends AppCompatActivity {
 
@@ -26,8 +35,7 @@ public class feedback extends AppCompatActivity {
     private EditText feedbackText;
     private Button submitFeedbackButton;
     private RecyclerView feedbackRecyclerView;
-    private FeedbackAdapter feedbackAdapter;
-    private ArrayList<FeedbackItem> feedbackList;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,106 +46,73 @@ public class feedback extends AppCompatActivity {
         feedbackText = findViewById(R.id.feedbackText);
         submitFeedbackButton = findViewById(R.id.submitFeedbackButton);
         feedbackRecyclerView = findViewById(R.id.feedbackRecyclerView);
-
-        feedbackList = new ArrayList<>();
-        feedbackAdapter = new FeedbackAdapter(feedbackList);
         feedbackRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        DataDatSan db = new DataDatSan(this);
+        ArrayList<Feedback> feedbackList = getAllFeedbacks();
+        feedback_Adapter feedbackAdapter = new feedback_Adapter(this,feedbackList);
         feedbackRecyclerView.setAdapter(feedbackAdapter);
 
         submitFeedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                submitFeedback();
+            public void onClick(View view) {
+                int stars = (int) ratingBar.getRating();
+                String text = feedbackText.getText().toString();
+
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH) + 1;
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                String currentDate = day + "/" + month + "/" + year;
+
+                SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                int customerId = preferences.getInt("customerId", -1);
+                if (!text.isEmpty()) {
+                    Feedback feedback = new Feedback(0, stars, text, currentDate,customerId);
+                    addFeedback(feedback);
+                    feedbackList.add(feedback);
+                    feedbackAdapter.notifyDataSetChanged();
+                    feedbackText.setText("");
+                    ratingBar.setRating(0);
+                }
             }
         });
+
     }
 
-    private void submitFeedback() {
-        String comment = feedbackText.getText().toString().trim();
-        float rating = ratingBar.getRating();
-
-        if (comment.isEmpty()) {
-            Toast.makeText(this, "Vui lòng nhập góp ý của bạn", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Thêm phản hồi mới vào danh sách
-        FeedbackItem newFeedback = new FeedbackItem("Đánh giá", rating, comment);
-        feedbackList.add(newFeedback);
-        feedbackAdapter.notifyItemInserted(feedbackList.size() - 1);
-
-        // Xóa nội dung đã nhập
-        feedbackText.setText("");
-        ratingBar.setRating(0);
-        Toast.makeText(this, "Cảm ơn bạn đã gửi góp ý!", Toast.LENGTH_SHORT).show();
+    public void addFeedback(Feedback feedback) {
+        DataDatSan helper = new DataDatSan(this);
+        db = helper.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("star", feedback.getStar());
+        values.put("feedback_text", feedback.getFeedbackText());
+        values.put("feedback_date", feedback.getFeedbackDate());
+        values.put("customer_id", feedback.getCustomerId());
+        db.insert("Feedback", null, values);
+        db.close();
     }
 
-    // Lớp FeedbackItem được gộp vào đây
-    private static class FeedbackItem {
-        private String category; // Danh mục phản hồi
-        private float rating;    // Điểm đánh giá
-        private String comment;  // Nội dung góp ý
+    public ArrayList<Feedback> getAllFeedbacks() {
+        ArrayList<Feedback> feedbackList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM Feedback";
+        DataDatSan helper = new DataDatSan(this);
+        db = helper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
 
-        // Constructor
-        public FeedbackItem(String category, float rating, String comment) {
-            this.category = category;
-            this.rating = rating;
-            this.comment = comment;
+        if (cursor.moveToFirst()) {
+            do {
+                Feedback feedback = new Feedback(
+                        cursor.getInt(0),
+                        cursor.getInt(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getInt(4)
+                );
+                feedbackList.add(feedback);
+            } while (cursor.moveToNext());
         }
-
-        // Getter cho danh mục
-        public String getCategory() {
-            return category;
-        }
-
-        // Getter cho đánh giá
-        public float getRating() {
-            return rating;
-        }
-
-        // Getter cho nội dung góp ý
-        public String getComment() {
-            return comment;
-        }
-    }
-    // Lớp FeedbackAdapter được gộp vào đây
-    private class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.FeedbackViewHolder> {
-        private ArrayList<FeedbackItem> feedbackList;
-
-        public FeedbackAdapter(ArrayList<FeedbackItem> feedbackList) {
-            this.feedbackList = feedbackList;
-        }
-
-        @NonNull
-        @Override
-        public FeedbackViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_feedback, parent, false);
-            return new FeedbackViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull FeedbackViewHolder holder, int position) {
-            FeedbackItem feedbackItem = feedbackList.get(position);
-            holder.ratingTextView.setText("Chất lượng dịch vụ: " + feedbackItem.getRating());
-            holder.commentTextView.setText("Góp ý: "+feedbackItem.getComment());
-        }
-
-        @Override
-        public int getItemCount() {
-            return feedbackList.size();
-        }
-
-        class FeedbackViewHolder extends RecyclerView.ViewHolder {
-            TextView categoryTextView;
-            TextView ratingTextView;
-            TextView commentTextView;
-
-            public FeedbackViewHolder(@NonNull View itemView) {
-                super(itemView);
-                ratingTextView = itemView.findViewById(R.id.tv_rating);
-                commentTextView = itemView.findViewById(R.id.tv_comment);
-            }
-        }
+        cursor.close();
+        db.close();
+        return feedbackList;
     }
 }
 

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.caulong.R;
 import com.example.caulong.data.DataDatSan;
@@ -38,10 +39,11 @@ public class HistoryFragment extends Fragment {
         if (getContext() != null) {
             helper = new DataDatSan(getContext());
             db = helper.getReadableDatabase();
-
             SharedPreferences preferences = requireContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
             int customerId = preferences.getInt("customerId", -1);
-            bookingHistories = getBookingHistoryByCustomerId(customerId);
+            if (customerId != -1) {
+                bookingHistories = getBookingHistoryByCustomerId(customerId);
+            }
         }
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_history);
@@ -50,8 +52,27 @@ public class HistoryFragment extends Fragment {
         BookingHistoryAdapter adapter = new BookingHistoryAdapter(bookingHistories);
         recyclerView.setAdapter(adapter);
 
+        adapter.setOnDataChangeListener(this::reloadData); // Thiết lập listener để gọi lại reloadData()
+        recyclerView.setAdapter(adapter);
+
         return view;
     }
+
+    public void reloadData() {
+        SharedPreferences preferences = requireContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        int customerId = preferences.getInt("customerId", -1);
+        if (customerId != -1) {
+            bookingHistories = getBookingHistoryByCustomerId(customerId);
+
+            // Cập nhật Adapter với danh sách dữ liệu mới
+            RecyclerView recyclerView = getView().findViewById(R.id.recycler_view_history);
+            BookingHistoryAdapter adapter = (BookingHistoryAdapter) recyclerView.getAdapter();
+            if (adapter != null) {
+                adapter.updateData(bookingHistories);
+            }
+        }
+    }
+
 
     // Lấy danh sách thời gian đã đặt cho một booking cụ thể
     public List<String> getBookingTimes(long bookingId) {

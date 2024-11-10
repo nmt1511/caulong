@@ -2,8 +2,14 @@ package com.example.caulong.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.caulong.booking.ServiceDetailAdapter;
+import com.example.caulong.entities.Service;
+
+import java.util.ArrayList;
 
 public class DataDatSan extends SQLiteOpenHelper {
     // Tên cơ sở dữ liệu và phiên bản
@@ -36,9 +42,10 @@ public class DataDatSan extends SQLiteOpenHelper {
                 "user_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "username TEXT NOT NULL UNIQUE, " +
                 "password TEXT NOT NULL, " +
-                "role TEXT NOT NULL)");
+                "role INTEGER NOT NULL)");
         sql = "INSERT INTO User (username, password, role) " +
-                "VALUES ('hoanghm','12345', 'guest')";
+                "VALUES ('hoanghm','123456', 1)," +
+                "('thuannm','123456', 0)" ;
         db.execSQL(sql);
 
         // Tạo bảng Customer
@@ -51,7 +58,7 @@ public class DataDatSan extends SQLiteOpenHelper {
                 "user_id INTEGER, " +
                 "FOREIGN KEY(user_id) REFERENCES User(user_id))");
         sql = "INSERT INTO Customer(customer_name,phone_number,email,user_id)"+
-                "VALUES ('Hoàng','0337023824','hoanghm4869@gmail.com',1)";
+                "VALUES ('Nguyễn Minh Thuận','0347023834','thuannm@gmail.com',2)";
         db.execSQL(sql);
 
         // Tạo bảng Admin
@@ -61,7 +68,9 @@ public class DataDatSan extends SQLiteOpenHelper {
                 "email TEXT, " +
                 "user_id INTEGER, " +
                 "FOREIGN KEY(user_id) REFERENCES User(user_id))");
-
+        sql = "INSERT INTO Admin(admin_name,email,user_id)"+
+                "VALUES ('Hoàng','hoanghm4869@gmail.com',1)";
+        db.execSQL(sql);
         // Tạo bảng Time
         db.execSQL("CREATE TABLE IF NOT EXISTS Time (" +
                 "time_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -186,4 +195,67 @@ public class DataDatSan extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public boolean updateBookingStatus(long bookingId, String newStatus) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("status", newStatus);
+        int rows = db.update("Booking", values, "booking_id = ?", new String[]{String.valueOf(bookingId)});
+        db.close();
+        return rows > 0;
+    }
+
+    public String getCustomerName(int customerId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String customerName = null;
+        String query = "SELECT customer_name FROM Customer WHERE customer_id = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(customerId)});
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                customerName = cursor.getString(0);
+            }
+            cursor.close();
+        }
+
+        db.close();
+        return customerName;
+    }
+
+    public String getCourtName(int courtId) {
+        String courtName = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT court_name FROM Court WHERE court_id = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(courtId)});
+
+        if (cursor.moveToFirst()) {
+            courtName = cursor.getString(cursor.getColumnIndexOrThrow("court_name"));
+        }
+        cursor.close();
+        db.close();
+
+        return courtName;
+    }
+
+    public ArrayList<Service> loadBookingServices(long bookingId) {
+        ArrayList<Service> serviceList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(
+                "SELECT s.service_name, bs.quantity,s.service_price,bs.total_price " +
+                        "FROM Booking_service bs " +
+                        "JOIN Service s ON bs.service_id = s.service_id " +
+                        "WHERE bs.booking_id = ?", new String[]{String.valueOf(bookingId)});
+
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(cursor.getColumnIndexOrThrow("service_name"));
+                int quantity = cursor.getInt(cursor.getColumnIndexOrThrow("quantity"));
+                double price = cursor.getInt(cursor.getColumnIndexOrThrow("service_price"));
+                double total = cursor.getDouble(cursor.getColumnIndexOrThrow("total_price"));
+                serviceList.add(new Service(name, quantity, price, total));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return  serviceList;
+    }
 }

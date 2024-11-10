@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Đánh giá (góp ý )"
+        android:padding="10dp"
         android:textSize="30sp"
         android:textStyle="bold"
         android:gravity="center"/>
@@ -37,6 +38,8 @@
         android:id="@+id/submitFeedbackButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/primary_300"
         android:text="Gửi đánh giá" />
 
     <!-- Phần danh sách đánh giá của người dùng -->
@@ -45,6 +48,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:text="Đánh giá của người dùng"
+        android:layout_marginTop="10dp"
         android:textSize="18sp"
         android:textStyle="bold" />
 
