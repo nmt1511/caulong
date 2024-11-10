@@ -37,7 +37,7 @@ public class Cancel_fragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.cancel_fragment, container, false);
         helper = new DataDatSan(getContext());
-        recyclerView = view.findViewById(R.id.ad_rvCancel_bbookingList);
+        recyclerView = view.findViewById(R.id.d_rvServices);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         bookings = getBookingByCourtAndDate();
         BookingAdapter bookingAdapter = new BookingAdapter(bookings);
@@ -49,7 +49,7 @@ public class Cancel_fragment extends Fragment {
     }
     public void reloadData() {
         bookings = getBookingByCourtAndDate();
-        RecyclerView recyclerView = getView().findViewById(R.id.ad_rvCancel_bbookingList);
+        RecyclerView recyclerView = getView().findViewById(R.id.d_rvServices);
         BookingAdapter adapter = (BookingAdapter) recyclerView.getAdapter();
         if (adapter != null) {
             adapter.updateData(bookings);

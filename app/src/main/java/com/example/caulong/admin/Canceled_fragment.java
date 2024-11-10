@@ -36,7 +36,7 @@ public class Canceled_fragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.cancel_fragment, container, false);
         helper = new DataDatSan(getContext());
-        recyclerView = view.findViewById(R.id.ad_rvCancel_bbookingList);
+        recyclerView = view.findViewById(R.id.d_rvServices);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         header = view.findViewById(R.id.headerTitle);
         header.setText("Danh Sách Đã Hủy Sân");
@@ -50,7 +50,8 @@ public class Canceled_fragment extends Fragment {
         ArrayList<BookingHistory> bookingHistories = new ArrayList<>();
         db = helper.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT b.booking_id,c.customer_id,c.customer_name,b.total_time,b.total_item, b.present_date,b.booking_date, b.status, b.court_id " +
+        Cursor cursor = db.rawQuery("SELECT b.booking_id,c.customer_id,c.customer_name,b.total_time," +
+                        "b.total_item, b.present_date,b.booking_date, b.status, b.court_id " +
                         "FROM Booking b INNER JOIN Customer c ON c.customer_id = b.customer_id " +
                         "WHERE b.status = ?",
                 new String[]{"Đã hủy"});
