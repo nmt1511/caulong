@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,30 +26,36 @@ import com.example.caulong.user.LoginActivity;
 
 public class HomeFragment extends Fragment {
     TextView txtGreeting;
+    ImageView imgAvatar;
+    LinearLayout datSanLayout, dichVuLayout, lichSuLayout, thongTinCaNhanLayout, hoTroLayout, lienHeLayout;
     SQLiteDatabase db;
+    DataDatSan helper;
 
     public HomeFragment() {
         // Required empty public constructor
+    }
+    void init(View view){
+        datSanLayout = view.findViewById(R.id.dat_san);
+        dichVuLayout = view.findViewById(R.id.dich_vu);
+        lichSuLayout = view.findViewById(R.id.lich_su);
+        thongTinCaNhanLayout = view.findViewById(R.id.thong_tin_ca_nhan);
+        hoTroLayout = view.findViewById(R.id.ho_tro);
+        lienHeLayout = view.findViewById(R.id.lien_he);
+        txtGreeting = view.findViewById(R.id.tvGreeting);
+        imgAvatar = view.findViewById(R.id.imgAvatar);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        helper = new DataDatSan(getContext());
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        // Khởi tạo các LinearLayout
-        LinearLayout datSanLayout = view.findViewById(R.id.dat_san);
-        LinearLayout dichVuLayout = view.findViewById(R.id.dich_vu);
-        LinearLayout lichSuLayout = view.findViewById(R.id.lich_su);
-        LinearLayout thongTinCaNhanLayout = view.findViewById(R.id.thong_tin_ca_nhan);
-        LinearLayout hoTroLayout = view.findViewById(R.id.ho_tro);
-        LinearLayout lienHeLayout = view.findViewById(R.id.lien_he);
-        txtGreeting = view.findViewById(R.id.tvGreeting);
+        init(view);
         SharedPreferences preferences = requireActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE);
         int userId = preferences.getInt("userId", -1);
+        int CustomerId = preferences.getInt("customerId", -1);
         if (userId != -1) {
-            DataDatSan helper = new DataDatSan(getContext());
             db = helper.getReadableDatabase();
             String welcome="";
             Cursor c= db.rawQuery("SELECT * FROM Customer WHERE user_id = ?", new String[]{String.valueOf(userId)});
@@ -56,6 +63,7 @@ public class HomeFragment extends Fragment {
                 welcome = c.getString(1);
             }
             txtGreeting.setText("Hello,\n"+welcome.toString());
+            helper.loadAvatarFromDatabase(imgAvatar, CustomerId);
         } else {
             Toast.makeText(getContext(), "Vui lòng đăng nhập để đặt sân!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getContext(), LoginActivity.class);

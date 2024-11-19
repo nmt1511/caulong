@@ -314,8 +314,8 @@ public class Booking_yard extends AppCompatActivity {
     private Set<String> getBookedTimes(String date, int courtId) {
         Cursor cursor = db.rawQuery("SELECT time_id FROM Booking_time " +
                         "INNER JOIN Booking ON Booking_time.booking_id = Booking.booking_id " +
-                        "WHERE Booking.court_id = ? AND Booking.booking_date = ?",
-                new String[]{String.valueOf(courtId), date});
+                        "WHERE Booking.court_id = ? AND Booking.booking_date = ? AND Booking.status != ?",
+                new String[]{String.valueOf(courtId), date, "Đã hủy"});
 
         if (cursor.moveToFirst()) {
             do {

@@ -25,6 +25,8 @@
         <activity android:name=".admin.AdminActivity"/>
         <activity android:name=".admin.BookingYard_Management"/>
         <activity android:name=".admin.Tournament_List"/>
+        <activity android:name=".admin.EditTournamentActivity"/>
+        <activity android:name=".admin.InsertTournamentActivity"/>
         <activity android:name=".user.LoginActivity"/>
         <activity android:name=".booking.ServiceListActivity" />
         <activity android:name=".booking.ServiceTypeListActivity" />

@@ -1,7 +1,7 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 <LinearLayout
     android:layout_width="match_parent"
@@ -24,13 +24,21 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColor="@color/white" />
-
-        <ImageView
-            android:id="@+id/profileImage"
+        <androidx.cardview.widget.CardView
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginTop="5dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_profile" />
+            app:cardCornerRadius="50dp"
+            app:cardElevation="6dp">
+            <ImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="@color/primary_300"
+                android:src="@drawable/ic_profile" />
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
     <!-- ViewFlipper cho quảng cáo -->

@@ -11,7 +11,7 @@
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:background="@drawable/rounded_background"
         android:src="@drawable/back"
         android:contentDescription="Trở lại"
@@ -20,29 +20,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imgProfile"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_Avatar"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="24dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_profile"
-        android:elevation="6dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnBack" />
+        app:layout_constraintTop_toBottomOf="@id/btnBack">
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@color/primary_300"
+            android:src="@drawable/ic_profile" />
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btn_Doi_Anh"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Đổi ảnh đại diện"
         android:textSize="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgProfile" />
+        app:layout_constraintTop_toBottomOf="@id/cardView_Avatar" />
 
     <TextView
         android:id="@+id/txtTitle"

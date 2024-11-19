@@ -47,7 +47,6 @@ public class feedback extends AppCompatActivity {
         submitFeedbackButton = findViewById(R.id.submitFeedbackButton);
         feedbackRecyclerView = findViewById(R.id.feedbackRecyclerView);
         feedbackRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        DataDatSan db = new DataDatSan(this);
         ArrayList<Feedback> feedbackList = getAllFeedbacks();
         feedback_Adapter feedbackAdapter = new feedback_Adapter(this,feedbackList);
         feedbackRecyclerView.setAdapter(feedbackAdapter);
