@@ -56,7 +56,6 @@
             android:src="@drawable/banner1" />
 
     </ViewFlipper>
-    <!-- Categories (Covid, Doctor, Medicine, Hospital) -->
     <TableLayout
         android:id="@+id/table1"
         android:layout_width="match_parent"
@@ -105,28 +104,6 @@
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lich_su"
-                style="@style/itemrow">
-
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/history"
-                    android:contentDescription="lịch sử" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lịch sử"
-                    android:textSize="14sp"
-                    android:textColor="@color/text_primary"
-                    android:gravity="center" />
-            </LinearLayout>
-        </TableRow>
-
-        <TableRow android:id="@+id/row2">
             <LinearLayout
                 android:id="@+id/thong_tin_ca_nhan"
                 style="@style/itemrow">
@@ -145,6 +122,28 @@
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
             </LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:id="@+id/lich_su"-->
+<!--                style="@style/itemrow">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="48dp"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:src="@drawable/history"-->
+<!--                    android:contentDescription="lịch sử" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Lịch sử"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:textColor="@color/text_primary"-->
+<!--                    android:gravity="center" />-->
+<!--            </LinearLayout>-->
+        </TableRow>
+
+        <TableRow android:id="@+id/row2">
+
 
             <LinearLayout
                 android:id="@+id/lien_he"
@@ -153,8 +152,8 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/baseline_clear_24"
-                    android:contentDescription="Liên hệ" />
+                    android:contentDescription="Liên hệ"
+                    android:src="@drawable/rating" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -171,7 +170,7 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/baseline_info_24"
+                    android:src="@drawable/help"
                     android:contentDescription="Hỗ trợ" />
 
                 <TextView

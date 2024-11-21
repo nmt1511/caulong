@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
     void init(View view){
         datSanLayout = view.findViewById(R.id.dat_san);
         dichVuLayout = view.findViewById(R.id.dich_vu);
-        lichSuLayout = view.findViewById(R.id.lich_su);
+//        lichSuLayout = view.findViewById(R.id.lich_su);
         thongTinCaNhanLayout = view.findViewById(R.id.thong_tin_ca_nhan);
         hoTroLayout = view.findViewById(R.id.ho_tro);
         lienHeLayout = view.findViewById(R.id.lien_he);
@@ -82,11 +82,11 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
 
-        lichSuLayout.setOnClickListener(v -> {
-            // Mở activity để xem lịch sử
-            Intent intent = new Intent(getActivity(), Booking_yard.class);
-            startActivity(intent);
-        });
+//        lichSuLayout.setOnClickListener(v -> {
+//            // Mở activity để xem lịch sử
+//            Intent intent = new Intent(getActivity(), Booking_yard.class);
+//            startActivity(intent);
+//        });
 
         thongTinCaNhanLayout.setOnClickListener(v -> {
             // Mở activity để xem thông tin cá nhân

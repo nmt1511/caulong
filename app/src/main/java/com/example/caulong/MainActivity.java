@@ -2,16 +2,9 @@ package com.example.caulong;
 
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -20,12 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.caulong.data.DataDatSan;
 import com.example.caulong.menubottom.AccountFragment;
 import com.example.caulong.menubottom.HistoryFragment;
 import com.example.caulong.menubottom.NotificationFragment;
-import com.example.caulong.menuleft.AboutFragment;
 import com.example.caulong.menuleft.ShareFragment;
+import com.example.caulong.menuleft.support;
 import com.example.caulong.user.LogoutActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -62,12 +54,14 @@ public class MainActivity extends AppCompatActivity {
         }
         //Thay thế Fragment theo lựa chọn của NavigationView
         navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.nav_settings) {
-                replaceFragment(new SettingFragment());
-            }else if(item.getItemId() == R.id.nav_share){
+//            if (item.getItemId() == R.id.nav_settings) {
+//                replaceFragment(new SettingFragment());
+//            }else
+            if(item.getItemId() == R.id.nav_share){
                 replaceFragment(new ShareFragment());
             }else if(item.getItemId() == R.id.nav_about){
-                replaceFragment(new AboutFragment());
+                Intent intent = new Intent(MainActivity.this, support.class);
+                startActivity(intent);
             }else if(item.getItemId() == R.id.nav_logout){
                 LogoutActivity.showExitConfirmationDialog(MainActivity.this);
                 return true;
