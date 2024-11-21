@@ -198,97 +198,141 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_background"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginBottom="12dp">
 
-        <TextView
-            android:id="@+id/nearDoctorName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dr. Joseph Brostito"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black" />
+        <!-- Ảnh bên trái -->
+        <ImageView
+            android:id="@+id/doctorImage"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="test"
+            android:scaleType="centerCrop"
+            android:background="@drawable/tieude1"
+            android:clipToOutline="true" />
 
-        <TextView
-            android:id="@+id/nearDoctorSpeciality"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dental Specialist"
-            android:textColor="@color/secondary_text_color" />
-
+        <!-- Tiêu đề và mô tả bên phải -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@drawable/baseline_clear_24" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/distance"
+                android:id="@+id/nearDoctorName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="1.2 KM"
+                android:text="@string/tieude1"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/nearDoctorSpeciality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">> Xem Ngay"
+                android:textColor="@color/secondary_text_color" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginBottom="12dp">
+
+        <!-- Ảnh bên trái -->
+        <ImageView
+            android:id="@+id/doctorImage2"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="test"
+            android:scaleType="centerCrop"
+            android:background="@drawable/tieude1"
+            android:clipToOutline="true" />
+
+        <!-- Tiêu đề và mô tả bên phải -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nearDoctorName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tieude2"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/nearDoctorSpeciality2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">> Xem Ngay"
                 android:textColor="@color/secondary_text_color" />
         </LinearLayout>
 
     </LinearLayout>
     <!-- Doctor List -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tin mới"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Tin mới"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="18sp"-->
+<!--        android:layout_marginBottom="8dp" />-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_background"
-        android:orientation="vertical"
-        android:padding="16dp">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/rounded_background"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="16dp">-->
 
-        <TextView
-            android:id="@+id/nearDoctorName1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dr. Joseph Brostito"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black" />
+<!--        <TextView-->
+<!--            android:id="@+id/nearDoctorName1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Dr. Joseph Brostito"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/black" />-->
 
-        <TextView
-            android:id="@+id/nearDoctorSpeciality1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dental Specialist"
-            android:textColor="@color/secondary_text_color" />
+<!--        <TextView-->
+<!--            android:id="@+id/nearDoctorSpeciality1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Dental Specialist"-->
+<!--            android:textColor="@color/secondary_text_color" />-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp">-->
 
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@drawable/baseline_clear_24" />
+<!--            <ImageView-->
+<!--                android:layout_width="16dp"-->
+<!--                android:layout_height="16dp"-->
+<!--                android:src="@drawable/baseline_clear_24" />-->
 
-            <TextView
-                android:id="@+id/test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="1.2 KM"
-                android:textColor="@color/secondary_text_color" />
-        </LinearLayout>
-    </LinearLayout>
+<!--            <TextView-->
+<!--                android:id="@+id/test"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="4dp"-->
+<!--                android:text="1.2 KM"-->
+<!--                android:textColor="@color/secondary_text_color" />-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
 </LinearLayout>
 </ScrollView>
