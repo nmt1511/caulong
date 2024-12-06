@@ -122,7 +122,7 @@ public class Booking_yard extends AppCompatActivity {
         getCourtList();
         //dsTime vào GridView
         getTimeList();
-
+        gridViewGio.setVisibility(View.GONE);
         // Xử lý chọn giờ
         gridViewGio.setOnItemClickListener((parent, view, position, id) -> {
             // Lấy thời gian tại vị trí được nhấp
@@ -181,6 +181,7 @@ public class Booking_yard extends AppCompatActivity {
                     int selectedCourtId = Integer.parseInt(CourtList.get(posSpinner).getCourt_id());
                     bookedTimes = getBookedTimes(selectedDate, selectedCourtId);
                     updateGridViewTimes(bookedTimes);
+                    gridViewGio.setVisibility(View.VISIBLE);
                 }else if(posSpinner == -1){
                     Toast.makeText(Booking_yard.this, "Hãy chọn sân!", Toast.LENGTH_LONG).show();
                 }
@@ -202,6 +203,7 @@ public class Booking_yard extends AppCompatActivity {
                     int selectedCourtId = Integer.parseInt(CourtList.get(posSpinner).getCourt_id());
                     bookedTimes = getBookedTimes(selectedDate, selectedCourtId);
                     updateGridViewTimes(bookedTimes);
+                    gridViewGio.setVisibility(View.VISIBLE);
                 }
             }
 
