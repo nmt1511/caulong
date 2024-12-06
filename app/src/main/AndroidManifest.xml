@@ -49,6 +49,7 @@
         <activity android:name=".menuleft.support" />
         <activity android:name=".user.InfoActivity"/>
         <activity android:name=".user.EditInfoActivity"/>
+        <activity android:name=".admin.RatingActivity"/>
     </application>
 
 </manifest>

@@ -82,13 +82,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lich_su"
+                android:id="@+id/rating"
                 style="@style/itemrow">
 
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/history"
+                    android:src="@drawable/rating"
                     android:contentDescription="Đánh giá" />
 
                 <TextView
@@ -128,7 +128,7 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/baseline_clear_24"
+                    android:src="@drawable/badminton"
                     android:contentDescription="giải đấu" />
 
                 <TextView

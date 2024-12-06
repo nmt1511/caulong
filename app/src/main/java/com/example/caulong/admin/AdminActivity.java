@@ -20,7 +20,7 @@ import com.example.caulong.user.LogoutActivity;
 
 public class AdminActivity extends Activity {
 
-    private LinearLayout datSanLayout, logout, tournament,service,customer;
+    private LinearLayout datSanLayout, logout, tournament,service,customer,rating;
     private TextView txtGreeting;
     SQLiteDatabase db;
     DataDatSan helper = new DataDatSan(this);
@@ -32,6 +32,7 @@ public class AdminActivity extends Activity {
         txtGreeting = findViewById(R.id.ad_tvGreeting);
         service = findViewById(R.id.dich_vu);
         customer = findViewById(R.id.Customer);
+        rating = findViewById(R.id.rating);
     }
 
     void initListener(){
@@ -56,6 +57,13 @@ public class AdminActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AdminActivity.this, ServiceList.class);
+                startActivity(intent);
+            }
+        });
+        rating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminActivity.this, RatingActivity.class);
                 startActivity(intent);
             }
         });
