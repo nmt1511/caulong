@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.caulong.menubottom.AccountFragment;
+import com.example.caulong.menubottom.GiaiDauFragment;
 import com.example.caulong.menubottom.HistoryFragment;
 import com.example.caulong.menubottom.NotificationFragment;
 import com.example.caulong.menuleft.ShareFragment;
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 replaceFragment(new HomeFragment());
             } else if (item.getItemId() == R.id.noti) {
-                replaceFragment(new NotificationFragment());
+                replaceFragment(new GiaiDauFragment());
             }else if (item.getItemId() == R.id.history) {
                 replaceFragment(new HistoryFragment());
             }else if (item.getItemId() == R.id.account) {

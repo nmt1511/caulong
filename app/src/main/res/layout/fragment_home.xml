@@ -53,7 +53,7 @@
             android:layout_height="match_parent"
             android:contentDescription="Quảng cáo 1"
             android:scaleType="centerCrop"
-            android:src="@drawable/banner1" />
+            android:src="@drawable/banner" />
 
     </ViewFlipper>
     <!-- Categories (Covid, Doctor, Medicine, Hospital) -->
