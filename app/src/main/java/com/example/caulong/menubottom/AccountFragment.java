@@ -10,7 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import static android.content.Context.MODE_PRIVATE;
-
+import android.widget.TextView;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
@@ -23,7 +23,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.caulong.R;
+import com.example.caulong.booking.Booking_yard;
 import com.example.caulong.data.DataDatSan;
+import com.example.caulong.menuleft.support;
+import com.example.caulong.user.InfoActivity;
+import com.example.caulong.user.LogoutActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,6 +38,7 @@ import java.util.Calendar;
 public class AccountFragment extends Fragment {
     private ImageView imgAvatar;
     private Button btn_ChangeAvatar;
+    TextView  txtPersonalInfo,txtInfo,txtShare,logout;
     int CustomerId;
     SQLiteDatabase db;
     DataDatSan helper;
@@ -43,6 +48,10 @@ public class AccountFragment extends Fragment {
     void init(View v){
         imgAvatar = v.findViewById(R.id.imgProfile);
         btn_ChangeAvatar = v.findViewById(R.id.btn_Doi_Anh);
+        txtPersonalInfo = v.findViewById(R.id.txtPersonalInfo);
+        txtInfo = v.findViewById(R.id.txtInfo);
+        txtShare = v.findViewById(R.id.txtShare);
+        logout = v.findViewById(R.id.logout);
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +65,15 @@ public class AccountFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_account, container, false);
         helper = new DataDatSan(getContext());
         init(view);
+        txtPersonalInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), InfoActivity.class);
+            startActivity(intent);
+        });
+        txtInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), support.class);
+            startActivity(intent);
+        });
+
         btn_ChangeAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,6 +141,7 @@ public class AccountFragment extends Fragment {
         );
         helper.loadAvatarFromDatabase(imgAvatar, CustomerId);
         return view;
+
     }
 
     private String saveImageToInternalStorage(Bitmap bitmap) {
