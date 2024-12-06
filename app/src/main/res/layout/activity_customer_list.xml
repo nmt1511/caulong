@@ -17,7 +17,7 @@
             android:id="@+id/headerTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Danh Sách Giải Đấu"
+            android:text="Danh Sách Khách hàng"
             android:textSize="24sp"
             android:textColor="@color/primary_900"
             android:fontFamily="sans-serif-medium"
@@ -28,9 +28,23 @@
             android:backgroundTint="@color/primary_200"
             android:background="@drawable/rounded_background"/>
 
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tìm kiếm khách hàng"
+            android:paddingStart="16dp"
+            android:padding="12dp"
+            android:background="@drawable/search_bar_bg"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:minHeight="48dp"
+            android:textColorHint="#888"
+            android:backgroundTint="@color/white"/>
+
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/d_rvTournament"
+            android:id="@+id/d_rvCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/primary_50"
@@ -42,7 +56,7 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnAdd_Customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|bottom"

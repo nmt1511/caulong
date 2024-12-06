@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Cancel_fragment extends Fragment {
+public class Complete_fragment extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<BookingHistory> bookings = new ArrayList<>();
     SQLiteDatabase db;
@@ -35,7 +35,7 @@ public class Cancel_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.cancel_fragment, container, false);
+        View view = inflater.inflate(R.layout.complete_fragment, container, false);
         helper = new DataDatSan(getContext());
         recyclerView = view.findViewById(R.id.d_rvServices);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -43,18 +43,18 @@ public class Cancel_fragment extends Fragment {
         BookingAdapter bookingAdapter = new BookingAdapter(bookings);
         recyclerView.setAdapter(bookingAdapter);
 
-        bookingAdapter.setOnDataChangeListener(this::reloadData); // Thiết lập listener để gọi lại reloadData()
+        //bookingAdapter.setOnDataChangeListener(this::reloadData); // Thiết lập listener để gọi lại reloadData()
         recyclerView.setAdapter(bookingAdapter);
         return view;
     }
-    public void reloadData() {
-        bookings = getBookingByCourtAndDate();
-        RecyclerView recyclerView = getView().findViewById(R.id.d_rvServices);
-        BookingAdapter adapter = (BookingAdapter) recyclerView.getAdapter();
-        if (adapter != null) {
-            adapter.updateData(bookings);
-        }
-    }
+//    public void reloadData() {
+//        bookings = getBookingByCourtAndDate();
+//        RecyclerView recyclerView = getView().findViewById(R.id.d_rvServices);
+//        BookingAdapter adapter = (BookingAdapter) recyclerView.getAdapter();
+//        if (adapter != null) {
+//            adapter.updateData(bookings);
+//        }
+//    }
     public ArrayList<BookingHistory> getBookingByCourtAndDate() {
         ArrayList<BookingHistory> bookingHistories = new ArrayList<>();
         db = helper.getReadableDatabase();
@@ -62,7 +62,7 @@ public class Cancel_fragment extends Fragment {
         Cursor cursor = db.rawQuery("SELECT b.booking_id,c.customer_id,c.customer_name,b.total_time,b.total_item, b.present_date,b.booking_date, b.status, b.court_id " +
                         "FROM Booking b INNER JOIN Customer c ON c.customer_id = b.customer_id " +
                         "WHERE b.status = ?",
-                new String[]{"Chờ hủy"});
+                new String[]{"Hoàn thành"});
 
         if (cursor.moveToFirst()) {
             do {

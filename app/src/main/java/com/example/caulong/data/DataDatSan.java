@@ -8,12 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.caulong.R;
 import com.example.caulong.booking.ServiceDetailAdapter;
 import com.example.caulong.entities.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DataDatSan extends SQLiteOpenHelper {
     // Tên cơ sở dữ liệu và phiên bản
@@ -190,6 +192,27 @@ public class DataDatSan extends SQLiteOpenHelper {
         db.close();
         return customerName;
     }
+    // Lấy danh sách thời gian đã đặt cho một booking cụ thể
+    public List<String> getBookingTimes(long bookingId) {
+        List<String> bookingTimes = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT t.time_name FROM Booking_time bt " +
+                "JOIN Time t ON bt.time_id = t.time_id " +
+                "WHERE bt.booking_id = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(bookingId)});
+
+        if (cursor.moveToFirst()) {
+            do {
+                String timeName = cursor.getString(0);
+                bookingTimes.add(timeName);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        return bookingTimes;
+    }
 
     public String getCourtName(int courtId) {
         String courtName = "";
@@ -247,5 +270,21 @@ public class DataDatSan extends SQLiteOpenHelper {
             cursor.close();
         }
         db.close();
+    }
+
+    public long savePayment(long booking_id, Context context){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        String method = "Thanh toán bằng tiền mặt";
+        String status = "Hoàn tất";
+        try{
+            values.put("booking_id",booking_id);
+            values.put("payment_method",method);
+            values.put("payment_status",status);
+            return (db.insert("Payment",null,values));
+        }catch (Exception e){
+            Toast.makeText(context, "Lỗi lưu vào Payment"+ e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        return -1;
     }
 }

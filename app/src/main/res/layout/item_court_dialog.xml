@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@drawable/rounded_background">
+
+    <TextView
+        android:id="@+id/tvCourtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="name court"
+        android:paddingBottom="4dp" />
+
+    <TextView
+        android:id="@+id/tvPresentDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="name court"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvBookingDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="name court"
+        android:textSize="14sp" />
+</LinearLayout>

@@ -7,6 +7,7 @@ public class Service implements Serializable {
     String service_name;
     int quantity;
     int type_id;
+    String type_name;
     double service_price;
     double total_price;
 
@@ -20,6 +21,15 @@ public class Service implements Serializable {
         this.service_name = service_name;
         this.service_price = service_price;
         this.type_id = type_id;
+    }
+
+    public Service(int quantity, int service_id, String service_name, double service_price, int type_id, String type_name) {
+        this.quantity = quantity;
+        this.service_id = service_id;
+        this.service_name = service_name;
+        this.service_price = service_price;
+        this.type_id = type_id;
+        this.type_name = type_name;
     }
 
     public double getTotal_price() {
@@ -50,6 +60,13 @@ public class Service implements Serializable {
         this.service_price = service_price;
         this.quantity = quantity;
         this.total_price = total_price;
+    }
+    public String getType_name() {
+        return type_name;
+    }
+
+    public void setType_name(String type_name) {
+        this.type_name = type_name;
     }
 
     public int getQuantity() {
@@ -94,6 +111,9 @@ public class Service implements Serializable {
 
     @Override
     public String toString() {
-        return service_name;
+        return "Service{" +
+                "service_name='" + service_name + '\'' +
+                ", service_price=" + service_price +
+                '}';
     }
 }

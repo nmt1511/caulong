@@ -103,7 +103,7 @@
 
         <TableRow android:id="@+id/row2">
             <LinearLayout
-                android:id="@+id/Info_Customer"
+                android:id="@+id/Customer"
                 style="@style/itemrow">
 
                 <ImageView

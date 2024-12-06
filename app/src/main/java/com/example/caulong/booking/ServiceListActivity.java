@@ -1,5 +1,6 @@
 package com.example.caulong.booking;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,7 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.caulong.MainActivity;
 import com.example.caulong.R;
+import com.example.caulong.admin.DetailCustomerActivity;
+import com.example.caulong.admin.EditCustomerActivity;
 import com.example.caulong.data.DataDatSan;
 import com.example.caulong.entities.Service;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -187,6 +191,24 @@ public class ServiceListActivity extends AppCompatActivity implements ServiceAda
                 int quantity = service.getQuantity();
                 double totalPrice = service.getService_price() * quantity;
 
+                // Truy vấn số lượng hiện tại từ cơ sở dữ liệu
+                String selectQuery = "SELECT quantity FROM Service WHERE service_id = ?";
+                Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(serviceId)});
+                if (cursor.moveToFirst()) {
+                    int currentQuantity = cursor.getInt(0); // Lấy số lượng hiện tại
+
+                    // Tính toán số lượng mới
+                    int newQuantity = currentQuantity - quantity;
+                    if (newQuantity < 0) {
+                        newQuantity = 0; // Đảm bảo số lượng không âm
+                    }
+
+                    // Cập nhật số lượng mới vào bảng Service
+                    String updateServiceQuery = "UPDATE Service SET quantity = ? WHERE service_id = ?";
+                    db.execSQL(updateServiceQuery, new Object[]{newQuantity, serviceId});
+                }
+                cursor.close();
+
                 String query = "INSERT INTO Booking_service (booking_id, service_id, quantity, total_price) VALUES (?, ?, ?, ?)";
                 db.execSQL(query, new Object[]{bookingId, serviceId, quantity, totalPrice});
                 totalItem += totalPrice;
@@ -203,6 +225,8 @@ public class ServiceListActivity extends AppCompatActivity implements ServiceAda
         serviceAdapter.notifyDataSetChanged();
         // Cập nhật tổng giá trị hiển thị về 0
         tvTotalPrice.setText("Giá: 0 VND");
-
+        Intent intent = new Intent(ServiceListActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -80,6 +80,14 @@ public class BookingHistory {
         this.status = status;
         this.times = times;
     }
+
+    public BookingHistory(long booking_id, String courtName, String presentdate, String bookingDate) {
+        this.booking_id = booking_id;
+        this.courtName = courtName;
+        this.presentdate = presentdate;
+        this.bookingDate = bookingDate;
+    }
+
     public double getTotalPrice() {
         return totalTime + totalItem;
     }

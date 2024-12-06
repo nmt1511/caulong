@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_50"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/headerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Danh Sách Khách hàng"
+        android:textSize="24sp"
+        android:textColor="@color/primary_900"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:padding="16dp"
+        android:elevation="4dp"
+        android:background="@drawable/rounded_background"
+        android:backgroundTint="@color/primary_200"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- CardView for customer information -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/headerTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linear_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ImageView for customer image -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView_Avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:cardCornerRadius="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                app:cardElevation="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent">
+                <ImageView
+                    android:id="@+id/imgAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@color/primary_300"
+                    android:src="@drawable/ic_profile" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- TableLayout for customer information -->
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*"
+                android:padding="16dp">
+
+                <!-- Customer Name (always visible) -->
+                <TableRow
+                    android:id="@+id/row1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Họ tên: "
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        style="@style/FontTexttable"/>
+                    <TextView
+                        android:id="@+id/tvName"
+                        style="@style/FontTexttable"/>
+                </TableRow>
+
+                <!-- Other TableRows to toggle -->
+                <TableRow
+                    android:id="@+id/row2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Giới tính: "
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        style="@style/FontTexttable"/>
+                    <TextView
+                        android:id="@+id/tvGender"
+                        style="@style/FontTexttable"/>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="SĐT: "
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        style="@style/FontTexttable"/>
+                    <TextView
+                        android:id="@+id/tvsdt"
+                        style="@style/FontTexttable"/>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Email"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        style="@style/FontTexttable"/>
+                    <TextView
+                        android:id="@+id/tvemail"
+                        style="@style/FontTexttable"/>
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <!-- Previous and Next buttons -->
+    <Button
+        android:id="@+id/btnPrevious"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt;&lt;"
+        android:textStyle="bold"
+        android:backgroundTint="@color/primary_300"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnNext"
+        android:layout_marginTop="25dp" />
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&gt;&gt;"
+        android:textStyle="bold"
+        android:backgroundTint="@color/primary_300"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintStart_toEndOf="@id/btnPrevious"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="25dp" />
+
+    <Button
+        android:id="@+id/btnDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Chi tiết"
+        android:textStyle="bold"
+        android:backgroundTint="@color/primary_500"
+        app:layout_constraintTop_toBottomOf="@id/btnPrevious"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnUpdate"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="25dp" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cập nhật"
+        android:textStyle="bold"
+        android:backgroundTint="@color/primary_500"
+        app:layout_constraintTop_toBottomOf="@id/btnPrevious"
+        app:layout_constraintStart_toEndOf="@id/btnDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

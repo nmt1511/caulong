@@ -49,88 +49,84 @@ public class BookingDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.booking_detail);
         helper = new DataDatSan(this);
-        db = helper.getReadableDatabase();
         init();
         booking_id = getIntent().getLongExtra("booking_id",-1);
-        loadBookingDetails(booking_id);
-        loadBookingServices(booking_id);
+        if (booking_id == -1) {
+            finish();
+        } else{
+            loadBookingDetails(booking_id);
+            loadBookingServices(booking_id);
+        }
     }
 
     private void loadBookingDetails(long bookingId) {
-        Cursor cursor = db.rawQuery(
-                "SELECT c.court_name, c.price, b.status, b.present_date, " +
-                        "b.booking_date, b.total_time, b.total_item " +
-                        "FROM Booking b JOIN Court c ON b.court_id = c.court_id " +
-                        "WHERE b.booking_id = ?", new String[]{String.valueOf(bookingId)});
-
-        if (cursor.moveToFirst()) {
-            courtname.setText(cursor.getString(cursor.getColumnIndexOrThrow("court_name")));
-            court_price.setText(String.format("%,.0f", cursor.getDouble(cursor.getColumnIndexOrThrow("price"))));
-            status.setText(cursor.getString(cursor.getColumnIndexOrThrow("status")));
-            phaying_date.setText(cursor.getString(cursor.getColumnIndexOrThrow("booking_date")));
-            booking_date.setText(cursor.getString(cursor.getColumnIndexOrThrow("present_date")));
-            List<String> bookingTimes = getBookingTimes(bookingId);
-            StringBuilder timesText = new StringBuilder();
-            for (String time : bookingTimes) {
-                timesText.append(time).append(", ");
-            }
-            booking_time.setText("Thời gian đã đặt: " + (timesText.length() > 0 ? timesText.substring(0, timesText.length() - 2) : ""));
-            booking_time.setText(getBookingTimes(bookingId).toString());
-            double total_time = cursor.getDouble(cursor.getColumnIndexOrThrow("total_time"));
-            double total_item = cursor.getDouble(cursor.getColumnIndexOrThrow("total_item"));
-            double tong = total_item + total_time;
-            CourtTotal.setText(String.format("%,.0f", total_time));
-            ServiceTotal.setText(String.format("%,.0f", total_item));
-            total.setText(String.format("%,.0f", tong));
-        }
-        cursor.close();
-    }
-
-    // Lấy danh sách thời gian đã đặt cho một booking cụ thể
-    public List<String> getBookingTimes(long bookingId) {
-        List<String> bookingTimes = new ArrayList<>();
         db = helper.getReadableDatabase();
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery(
+                    "SELECT c.court_name, c.price, b.status, b.present_date, " +
+                            "b.booking_date, b.total_time, b.total_item " +
+                            "FROM Booking b JOIN Court c ON b.court_id = c.court_id " +
+                            "WHERE b.booking_id = ?",
+                    new String[]{String.valueOf(bookingId)}
+            );
 
-        String query = "SELECT t.time_name FROM Booking_time bt " +
-                "JOIN Time t ON bt.time_id = t.time_id " +
-                "WHERE bt.booking_id = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(bookingId)});
+            if (cursor.moveToFirst()) {
+                courtname.setText(cursor.getString(cursor.getColumnIndexOrThrow("court_name")));
+                court_price.setText(String.format("%,.0f", cursor.getDouble(cursor.getColumnIndexOrThrow("price"))));
+                status.setText(cursor.getString(cursor.getColumnIndexOrThrow("status")));
+                phaying_date.setText(cursor.getString(cursor.getColumnIndexOrThrow("booking_date")));
+                booking_date.setText(cursor.getString(cursor.getColumnIndexOrThrow("present_date")));
 
-        if (cursor.moveToFirst()) {
-            do {
-                bookingTimes.add(cursor.getString(0));
-            } while (cursor.moveToNext());
+                List<String> bookingTimes = helper.getBookingTimes(bookingId);
+                StringBuilder timesText = new StringBuilder();
+                for (String time : bookingTimes) {
+                    timesText.append(time).append(", ");
+                }
+                booking_time.setText("Thời gian đã đặt: " + (timesText.length() > 0 ? timesText.substring(0, timesText.length() - 2) : ""));
+
+                double total_time = cursor.getDouble(cursor.getColumnIndexOrThrow("total_time"));
+                double total_item = cursor.getDouble(cursor.getColumnIndexOrThrow("total_item"));
+                double tong = total_item + total_time;
+
+                CourtTotal.setText(String.format("%,.0f", total_time));
+                ServiceTotal.setText(String.format("%,.0f", total_item));
+                total.setText(String.format("%,.0f", tong));
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
-        cursor.close();
-
-        return bookingTimes;
+        db.close();
     }
+
 
     private void loadBookingServices(long bookingId) {
-        Cursor cursor = db.rawQuery(
-                "SELECT s.service_name, bs.quantity,s.service_price,bs.total_price " +
-                        "FROM Booking_service bs " +
-                        "JOIN Service s ON bs.service_id = s.service_id " +
-                        "WHERE bs.booking_id = ?", new String[]{String.valueOf(bookingId)});
-
-        if (cursor.moveToFirst()) {
-            do {
-                String name = cursor.getString(cursor.getColumnIndexOrThrow("service_name"));
-                int quantity = cursor.getInt(cursor.getColumnIndexOrThrow("quantity"));
-                double price = cursor.getInt(cursor.getColumnIndexOrThrow("service_price"));
-                double total = cursor.getDouble(cursor.getColumnIndexOrThrow("total_price"));
-                serviceList.add(new Service(name, quantity, price, total));
-            } while (cursor.moveToNext());
+        db = helper.getReadableDatabase();
+        serviceList.clear();
+        Cursor cursor = null;
+        try{
+            cursor = db.rawQuery(
+                    "SELECT s.service_name, bs.quantity,s.service_price,bs.total_price " +
+                            "FROM Booking_service bs " +
+                            "JOIN Service s ON bs.service_id = s.service_id " +
+                            "WHERE bs.booking_id = ?", new String[]{String.valueOf(bookingId)});
+            if (cursor.moveToFirst()) {
+                do {
+                    String name = cursor.getString(cursor.getColumnIndexOrThrow("service_name"));
+                    int quantity = cursor.getInt(cursor.getColumnIndexOrThrow("quantity"));
+                    double price = cursor.getInt(cursor.getColumnIndexOrThrow("service_price"));
+                    double total = cursor.getDouble(cursor.getColumnIndexOrThrow("total_price"));
+                    serviceList.add(new Service(name, quantity, price, total));
+                } while (cursor.moveToNext());
+            }
+        }finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
-        cursor.close();
         serviceAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (db != null && db.isOpen()) {
-            db.close();  // Đóng db khi Activity bị hủy
-        }
+        db.close();
     }
 }

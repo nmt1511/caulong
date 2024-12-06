@@ -2,6 +2,7 @@ package com.example.caulong.user;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +20,10 @@ import com.example.caulong.data.DataDatSan;
 public class EditInfoActivity extends AppCompatActivity {
 
     private EditText edtCustomerName, edtGender, edtPhone, edtEmail;
+    private ImageView imgAvatar;
     private Button btnSave;
     private SQLiteDatabase db;
+    DataDatSan dbHelper = new DataDatSan(this);
     private int userId; // Lưu userId
 
     @Override
@@ -28,7 +32,6 @@ public class EditInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_info);
 
         // Khởi tạo database
-        DataDatSan dbHelper = new DataDatSan(this);
         db = dbHelper.getWritableDatabase();
 
         // Lấy userId từ Intent
@@ -40,7 +43,10 @@ public class EditInfoActivity extends AppCompatActivity {
         edtPhone = findViewById(R.id.edtPhone);
         edtEmail = findViewById(R.id.edtEmail);
         btnSave = findViewById(R.id.btnSave);
-
+        imgAvatar = findViewById(R.id.imgProfile);
+        SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        int CustomerId = preferences.getInt("customerId", -1);
+        dbHelper.loadAvatarFromDatabase(imgAvatar, CustomerId);
         // Lấy thông tin hiện tại từ cơ sở dữ liệu
         loadUserInfo();
 
@@ -63,6 +69,7 @@ public class EditInfoActivity extends AppCompatActivity {
     }
 
     private void loadUserInfo() {
+        db = dbHelper.getReadableDatabase();
         // Thực hiện truy vấn lấy thông tin người dùng từ cơ sở dữ liệu và gán vào EditText
         String query = "SELECT c.customer_name, c.gender, c.phone_number, c.email " +
                 "FROM User u " +
@@ -76,9 +83,11 @@ public class EditInfoActivity extends AppCompatActivity {
             edtEmail.setText(cursor.getString(3));
         }
         cursor.close();
+        db.close();
     }
 
     private void saveUserInfo() {
+        db = dbHelper.getReadableDatabase();
         // Lưu thông tin mới vào cơ sở dữ liệu
         ContentValues values = new ContentValues();
         values.put("customer_name", edtCustomerName.getText().toString());
@@ -94,5 +103,6 @@ public class EditInfoActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Cập nhật thông tin thất bại", Toast.LENGTH_SHORT).show();
         }
+        db.close();
     }
 }

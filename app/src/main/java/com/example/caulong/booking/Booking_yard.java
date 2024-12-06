@@ -276,9 +276,13 @@ public class Booking_yard extends AppCompatActivity {
                         .setPositiveButton("OK", null)
                         .show();
                 // Cập nhật màu đỏ cho các ô giờ đã chọn
-                Set<String> bookedTimes = getBookedTimes(selectedDate, courtId);
+                bookedTimes = getBookedTimes(selectedDate, courtId);//?
                 bookedTimes.addAll(selectedSet);
                 updateGridViewTimes(bookedTimes);
+                bookedTimes.clear();
+                selectedSet.clear();
+                totalTimeSelected = 0;
+                updateTotalPrice();
             } else {
                 Toast.makeText(Booking_yard.this, "Vui lòng đăng nhập để đặt sân!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Booking_yard.this, LoginActivity.class);

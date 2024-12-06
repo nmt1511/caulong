@@ -40,9 +40,11 @@ public class Booked_fragment extends Fragment {
     ArrayList<court> CourtList = new ArrayList<court>();
     ArrayAdapter<court> adapter_court;
     private ArrayList<BookingHistory> bookings = new ArrayList<>();
+    BookingAdapter bookingAdapter = new BookingAdapter(bookings);
     SQLiteDatabase db;
     DataDatSan helper;
     int posSpinner = -1;
+    int courtId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,9 +88,8 @@ public class Booked_fragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view,
                                        int i, long l) {
                 posSpinner = i;
-                int courtId = Integer.parseInt(CourtList.get(posSpinner).getCourt_id());
+                courtId = Integer.parseInt(CourtList.get(posSpinner).getCourt_id());
                 bookings = getBookingByCourtAndDate(selectedDate,courtId);
-                BookingAdapter bookingAdapter = new BookingAdapter(bookings);
                 recyclerView.setAdapter(bookingAdapter);
             }
 
@@ -118,7 +119,16 @@ public class Booked_fragment extends Fragment {
                 }
             }
         });
+        bookingAdapter.setOnDataChangeListener(this::reloadData);
         return view;
+    }
+    public void reloadData() {
+        bookings = getBookingByCourtAndDate(selectedDate,courtId);
+        RecyclerView recyclerView = getView().findViewById(R.id.d_rvServices);
+        BookingAdapter adapter = (BookingAdapter) recyclerView.getAdapter();
+        if (adapter != null) {
+            adapter.updateData(bookings);
+        }
     }
     private void getCourtList(String date) {
         try {
@@ -170,7 +180,7 @@ public class Booked_fragment extends Fragment {
                 int court_Id = cursor.getInt(8);
 
                 // Lấy danh sách thời gian đã đặt cho booking hiện tại
-                List<String> times = getBookingTimes(bookingId);
+                List<String> times =helper.getBookingTimes(bookingId);
 
                 bookingHistories.add(new BookingHistory(bookingId,customerId,customerName,total_time,
                         total_item,times, status, presentDate,bookingDate,court_Id));
@@ -180,26 +190,5 @@ public class Booked_fragment extends Fragment {
         db.close();
 
         return bookingHistories;
-    }
-    // Lấy danh sách thời gian đã đặt cho một booking cụ thể
-    public List<String> getBookingTimes(long bookingId) {
-        List<String> bookingTimes = new ArrayList<>();
-        db = helper.getReadableDatabase();
-
-        String query = "SELECT t.time_name FROM Booking_time bt " +
-                "JOIN Time t ON bt.time_id = t.time_id " +
-                "WHERE bt.booking_id = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(bookingId)});
-
-        if (cursor.moveToFirst()) {
-            do {
-                String timeName = cursor.getString(0);
-                bookingTimes.add(timeName);
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        db.close();
-
-        return bookingTimes;
     }
 }

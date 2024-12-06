@@ -167,6 +167,7 @@ public class SignupActivity extends AppCompatActivity{
                         customerValues.put("phone_number", phone);
                         customerValues.put("email", email);
                         customerValues.put("user_id", userId);
+                        customerValues.put("avatar","");
 
                         long customerId = db.insert("Customer", null, customerValues); // Thêm vào bảng Customer
                         if (customerId != -1) {

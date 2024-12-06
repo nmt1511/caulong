@@ -58,6 +58,8 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
             holder.status.setTextColor(ContextCompat.getColor(holder.status.getContext(), R.color.notice_color));
         else if (booking.getStatus().equals("Đã hủy"))
             holder.status.setTextColor(ContextCompat.getColor(holder.status.getContext(), R.color.red));
+        else if(booking.getStatus().equals("Hoàn thành"))
+            holder.status.setTextColor(ContextCompat.getColor(holder.status.getContext(), R.color.light_green));
         else
             holder.status.setTextColor(ContextCompat.getColor(holder.status.getContext(), R.color.primary));
         holder.itemView.setOnClickListener(v -> {
@@ -121,7 +123,10 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
 
         if (booking.getStatus().equals("Chờ hủy")) {
             confirmButton.setVisibility(View.VISIBLE);
-        } else {
+        }else if (booking.getStatus().equals("Đã đặt")) {
+            confirmButton.setText("Complete");
+        }
+        else {
             confirmButton.setVisibility(View.GONE);
         }
 
@@ -130,19 +135,72 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
 
         confirmButton.setOnClickListener(view -> {
             dbHelper = new DataDatSan(context);
-            boolean isUpdated = dbHelper.updateBookingStatus(booking.getBooking_id(), "Đã hủy");
-            if (isUpdated) {
-                Toast.makeText(context,"Đã thực hiện yêu cầu hủy sân!", Toast.LENGTH_SHORT).show();
-                if (onDataChangeListener != null) {
-                    onDataChangeListener.onDataChanged();
+            if(!booking.getStatus().equals("Đã đặt")){
+                boolean isUpdated = dbHelper.updateBookingStatus(booking.getBooking_id(), "Đã hủy");
+                if (isUpdated) {
+                    Toast.makeText(context,"Đã thực hiện yêu cầu hủy sân!", Toast.LENGTH_SHORT).show();
+                    if (onDataChangeListener != null) {
+                        onDataChangeListener.onDataChanged();
+                    }
+                } else {
+                    Toast.makeText(context, "Hủy thất bại!", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(context, "Hủy thất bại!", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }else{
+                long id = dbHelper.savePayment(booking.getBooking_id(),context);
+                if(id != -1){
+                    boolean isUpdated = dbHelper.updateBookingStatus(booking.getBooking_id(), "Hoàn thành");
+                    if (isUpdated) {
+                        Toast.makeText(context, "Hoàn tất thanh toán!", Toast.LENGTH_SHORT).show();
+                        if (onDataChangeListener != null) {
+                            onDataChangeListener.onDataChanged();  // Gọi callback để cập nhật dữ liệu
+                        }
+                    } else {
+                        Toast.makeText(context, "Thanh toán thất bại!", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(context, "Lỗi!", Toast.LENGTH_SHORT).show();
+                }
             }
-            dialog.dismiss();
         });
-
     }
+
+//    private void ConfirmComplete(long bookingID, Context context) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//        LayoutInflater inflater = LayoutInflater.from(context);
+//        View dialogView = inflater.inflate(R.layout.dialog_confirm_cancelbooking, null);
+//        builder.setView(dialogView);
+//
+//        Button btnCancel = dialogView.findViewById(R.id.btnCancel);
+//        Button btnConfirm = dialogView.findViewById(R.id.btnConfirm);
+//        TextView txtTitle = dialogView.findViewById(R.id.tvTitle);
+//        TextView txtMessage = dialogView.findViewById(R.id.tvMessage);
+//        txtTitle.setText("Xác nhận hoàn thành");
+//        txtMessage.setText("Bạn có chắc chắn muốn hoàn thành không?");
+//
+//        AlertDialog alertDialog = builder.create();
+//
+//        btnCancel.setOnClickListener(v -> alertDialog.dismiss());
+//
+//        btnConfirm.setOnClickListener(v -> {
+//            DataDatSan dbHelper = new DataDatSan(context);
+//            long id = dbHelper.savePayment(bookingID,context);
+//            if(id != -1){
+//                boolean isUpdated = dbHelper.updateBookingStatus(bookingID, "Hoàn thành");
+//                if (isUpdated) {
+//                    Toast.makeText(context, "Hoàn tất thanh toán!", Toast.LENGTH_SHORT).show();
+//                    if (onDataChangeListener != null) {
+//                        onDataChangeListener.onDataChanged();  // Gọi callback để cập nhật dữ liệu
+//                    }
+//                } else {
+//                    Toast.makeText(context, "Thanh toán thất bại!", Toast.LENGTH_SHORT).show();
+//                }
+//            }else {
+//                Toast.makeText(context, "Lỗi!", Toast.LENGTH_SHORT).show();
+//            }
+//            alertDialog.dismiss();
+//        });
+//    }
 
 
     public void updateData(List<BookingHistory> newBookingHistories) {

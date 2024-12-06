@@ -73,45 +73,6 @@ public class HistoryFragment extends Fragment {
         }
     }
 
-
-    // Lấy danh sách thời gian đã đặt cho một booking cụ thể
-    public List<String> getBookingTimes(long bookingId) {
-        List<String> bookingTimes = new ArrayList<>();
-        db = helper.getReadableDatabase();
-
-        String query = "SELECT t.time_name FROM Booking_time bt " +
-                "JOIN Time t ON bt.time_id = t.time_id " +
-                "WHERE bt.booking_id = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(bookingId)});
-
-        if (cursor.moveToFirst()) {
-            do {
-                String timeName = cursor.getString(0);
-                bookingTimes.add(timeName);
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        db.close();
-
-        return bookingTimes;
-    }
-    // Lấy tên sân dựa trên court_id
-    public String getCourtName(int courtId) {
-        String courtName = "";
-        db = helper.getReadableDatabase();
-
-        String query = "SELECT court_name FROM Court WHERE court_id = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(courtId)});
-
-        if (cursor.moveToFirst()) {
-            courtName = cursor.getString(cursor.getColumnIndexOrThrow("court_name"));
-        }
-        cursor.close();
-        db.close();
-
-        return courtName;
-    }
-
     // Hàm lấy lịch sử đặt sân và thời gian đặt sân cho mỗi booking
     public List<BookingHistory> getBookingHistoryByCustomerId(int customerId) {
         List<BookingHistory> bookingHistories = new ArrayList<>();
@@ -124,13 +85,13 @@ public class HistoryFragment extends Fragment {
             do {
                 long bookingId = cursor.getLong(cursor.getColumnIndexOrThrow("booking_id"));
                 int courtId = cursor.getInt(cursor.getColumnIndexOrThrow("court_id"));
-                String courtName = getCourtName(courtId);
+                String courtName = helper.getCourtName(courtId);
                 String presentDate = cursor.getString(cursor.getColumnIndexOrThrow("present_date"));
                 String bookingDate = cursor.getString(cursor.getColumnIndexOrThrow("booking_date"));
                 String status = cursor.getString(cursor.getColumnIndexOrThrow("status"));
 
                 // Lấy danh sách thời gian đã đặt cho booking hiện tại
-                List<String> times = getBookingTimes(bookingId);
+                List<String> times = helper.getBookingTimes(bookingId);
 
                 bookingHistories.add(new BookingHistory(bookingId, courtName, presentDate, bookingDate, status, times));
             } while (cursor.moveToNext());

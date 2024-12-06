@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,7 @@ public class InfoActivity extends AppCompatActivity {
 
     private SQLiteDatabase db;
     private DataDatSan dbDatSan;
+    private ImageView imgAvatar;
     private TextView tvUsername, tvName, tvGender, tvPhone, tvEmail;
 
     @Override
@@ -36,11 +38,14 @@ public class InfoActivity extends AppCompatActivity {
         tvGender = findViewById(R.id.tvGender);
         tvPhone = findViewById(R.id.tvPhone);
         tvEmail = findViewById(R.id.tvEmail);
+        imgAvatar = findViewById(R.id.imgProfile);
 
         // Lấy user_id từ SharedPreferences
         // Trong InfoActivity.java, kiểm tra giá trị userId
         SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         int userId = preferences.getInt("userId", -1);
+        int CustomerId = preferences.getInt("customerId", -1);
+        dbDatSan.loadAvatarFromDatabase(imgAvatar, CustomerId);
         Log.d("UserID", "userId: " + userId);
 
         refreshUserInfo(userId);
@@ -79,6 +84,7 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     private void refreshUserInfo(int userId) {
+        db = dbDatSan.getReadableDatabase();
         // Thực hiện truy vấn lấy thông tin người dùng từ cơ sở dữ liệu
         String query = "SELECT u.username, c.customer_name, c.gender, c.phone_number, c.email " +
                 "FROM User u " +
@@ -93,9 +99,11 @@ public class InfoActivity extends AppCompatActivity {
             tvEmail.setText(cursor.getString(4));
         }
         cursor.close();
+        db.close();
     }
 
     private void displayUserInfo(int userId) {
+        db = dbDatSan.getReadableDatabase();
         // Câu truy vấn lấy thông tin người dùng từ bảng User và Customer
         String query = "SELECT u.username, u.role, c.customer_name, c.gender, c.phone_number, c.email " +
                 "FROM User u " +
@@ -120,9 +128,6 @@ public class InfoActivity extends AppCompatActivity {
             tvEmail.setText(email);
         }
         cursor.close();
-
-
+        db.close();
     }
-
-
 }

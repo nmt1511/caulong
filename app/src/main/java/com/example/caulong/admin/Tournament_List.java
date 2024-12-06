@@ -17,12 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.caulong.R;
 import com.example.caulong.data.DataDatSan;
 import com.example.caulong.entities.tournament;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class Tournament_List extends Activity {
     private RecyclerView recyclerView;
-    private Button btnAdd;
+    private FloatingActionButton btnAdd;
     private ArrayList<tournament> tournamentList;
     private TournamentAdapter adapter;
     SQLiteDatabase db;
@@ -35,7 +36,7 @@ public class Tournament_List extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tournament_list);
-        recyclerView = findViewById(R.id.d_rvServices);
+        recyclerView = findViewById(R.id.d_rvTournament);
         btnAdd = findViewById(R.id.btnAdd);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         helper = new DataDatSan(this);

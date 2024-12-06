@@ -19,19 +19,26 @@
         android:elevation="4dp"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imgProfile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_Avatar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginTop="24dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_profile"
-
-        android:elevation="6dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnBack" />
+        app:layout_constraintTop_toBottomOf="@id/btnBack">
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@color/primary_300"
+            android:src="@drawable/ic_profile" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tvUsername"
@@ -41,7 +48,7 @@
         android:textSize="24sp"
         android:textColor="@color/text_primary"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/imgProfile"
+        app:layout_constraintTop_toBottomOf="@id/cardView_Avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp" />

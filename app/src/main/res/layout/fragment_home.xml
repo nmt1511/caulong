@@ -56,6 +56,7 @@
             android:src="@drawable/banner1" />
 
     </ViewFlipper>
+    <!-- Categories (Covid, Doctor, Medicine, Hospital) -->
     <TableLayout
         android:id="@+id/table1"
         android:layout_width="match_parent"
@@ -105,6 +106,28 @@
                     android:gravity="center" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/lien_he"
+                style="@style/itemrow">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/rating"
+                    android:contentDescription="Liên hệ" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đánh giá"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:gravity="center" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow android:id="@+id/row2">
+            <LinearLayout
                 android:id="@+id/thong_tin_ca_nhan"
                 style="@style/itemrow">
 
@@ -122,47 +145,7 @@
                     android:textColor="@color/text_primary"
                     android:gravity="center" />
             </LinearLayout>
-<!--            <LinearLayout-->
-<!--                android:id="@+id/lich_su"-->
-<!--                style="@style/itemrow">-->
 
-<!--                <ImageView-->
-<!--                    android:layout_width="48dp"-->
-<!--                    android:layout_height="48dp"-->
-<!--                    android:src="@drawable/history"-->
-<!--                    android:contentDescription="lịch sử" />-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Lịch sử"-->
-<!--                    android:textSize="14sp"-->
-<!--                    android:textColor="@color/text_primary"-->
-<!--                    android:gravity="center" />-->
-<!--            </LinearLayout>-->
-        </TableRow>
-
-        <TableRow android:id="@+id/row2">
-
-
-            <LinearLayout
-                android:id="@+id/lien_he"
-                style="@style/itemrow">
-
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:contentDescription="Liên hệ"
-                    android:src="@drawable/rating" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Đánh giá"
-                    android:textSize="14sp"
-                    android:textColor="@color/text_primary"
-                    android:gravity="center" />
-            </LinearLayout>
             <LinearLayout
                 android:id="@+id/ho_tro"
                 style="@style/itemrow">
@@ -193,7 +176,6 @@
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_marginBottom="8dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -238,101 +220,74 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <!-- Doctor List -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tin mới"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_background"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:layout_marginBottom="12dp">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- Ảnh bên trái -->
-        <ImageView
-            android:id="@+id/doctorImage2"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="test"
-            android:scaleType="centerCrop"
-            android:background="@drawable/tieude1"
-            android:clipToOutline="true" />
-
-        <!-- Tiêu đề và mô tả bên phải -->
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/TournamentName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
+            android:text="Giải đấu"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
             <TextView
-                android:id="@+id/nearDoctorName2"
+                android:id="@+id/startDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tieude2"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="@color/black" />
-
+                android:text="start"
+                android:textColor="@color/secondary_text_color" />
             <TextView
-                android:id="@+id/nearDoctorSpeciality2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=">> Xem Ngay"
+                android:text="  -  "
+                android:textColor="@color/secondary_text_color" />
+            <TextView
+                android:id="@+id/endDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="end"
                 android:textColor="@color/secondary_text_color" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/baseline_info_24" />
+
+            <TextView
+                android:id="@+id/txtdecription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Mô tả"
+                android:textColor="@color/secondary_text_color" />
+        </LinearLayout>
     </LinearLayout>
-    <!-- Doctor List -->
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Tin mới"-->
-<!--        android:textStyle="bold"-->
-<!--        android:textSize="18sp"-->
-<!--        android:layout_marginBottom="8dp" />-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/rounded_background"-->
-<!--        android:orientation="vertical"-->
-<!--        android:padding="16dp">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/nearDoctorName1"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Dr. Joseph Brostito"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textColor="@color/black" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/nearDoctorSpeciality1"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Dental Specialist"-->
-<!--            android:textColor="@color/secondary_text_color" />-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_marginTop="8dp">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="16dp"-->
-<!--                android:layout_height="16dp"-->
-<!--                android:src="@drawable/baseline_clear_24" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/test"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:text="1.2 KM"-->
-<!--                android:textColor="@color/secondary_text_color" />-->
-<!--        </LinearLayout>-->
-<!--    </LinearLayout>-->
 </LinearLayout>
 </ScrollView>

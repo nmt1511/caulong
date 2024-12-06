@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
 //         Load fragment đầu tiên nếu chưa có
         if (savedInstanceState == null) {
-            //Hiện Map đầu tiên
             replaceFragment(new HomeFragment());
             //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
