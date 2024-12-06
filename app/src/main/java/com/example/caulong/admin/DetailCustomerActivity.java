@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +48,31 @@ public class DetailCustomerActivity extends Activity {
         helper = new DataDatSan(this);
     }
 
+    private void getCustomerList() {
+        try {
+            db = helper.getReadableDatabase();
+            Cursor c = db.rawQuery("SELECT customer_id, customer_name, gender, phone_number, email, user_id, avatar FROM customer", null);
+            if (c != null) {
+                customerList.clear(); // Xóa dữ liệu cũ nếu có
+                while (c.moveToNext()) {
+                    customerList.add(new Customer(
+                            c.getString(0),
+                            c.getString(1),
+                            c.getString(2),
+                            c.getString(3),
+                            c.getString(4),
+                            Long.parseLong(c.getString(5)),
+                            c.getString(6)
+                    ));
+                }
+                c.close();
+            }
+        } catch (Exception ex) {
+            Toast.makeText(getApplicationContext(), "Lỗi: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        db.close();
+    }
+
     private void getInformation(String id){
         db = helper.getReadableDatabase();
         Cursor c= db.rawQuery("select * from Customer where customer_id = ?", new String[]{id});
@@ -59,6 +85,7 @@ public class DetailCustomerActivity extends Activity {
         }
         if(c != null)
             c.close();
+        helper.loadAvatarFromDatabase(imgAvatar,Integer.parseInt(id));
     }
 
     private void getAllCustomerID(){
@@ -66,12 +93,13 @@ public class DetailCustomerActivity extends Activity {
         Cursor c= db.rawQuery("select customer_id from Customer",null);
 
         if(c != null) {
+            customerIds.clear();
             while(c.moveToNext()) {
-                String id = c.getString(0);
-                customerIds.add(id);
+                customerIds.add(c.getString(0));
             }
             c.close();
         }
+        db.close();
     }
 
     @Override
@@ -80,6 +108,7 @@ public class DetailCustomerActivity extends Activity {
         setContentView(R.layout.activity_detail_customer);
         init();
         getAllCustomerID();
+        getCustomerList();
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("data");
         if(bundle != null){
@@ -88,6 +117,11 @@ public class DetailCustomerActivity extends Activity {
             currentCustomerID = id;
             currentIndex = customerIds.indexOf(id);  // Xác định vị trí hiện tại dựa trên ID
             getInformation(currentCustomerID);
+        }
+        if (customerList.isEmpty()) {
+            currentIndex = -1;
+        } else if (currentIndex >= customerList.size()) {
+            currentIndex = 0;
         }
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,23 +154,31 @@ public class DetailCustomerActivity extends Activity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Customer c = customerList.get(currentIndex);
-                Bundle bundle = new Bundle();
-                Intent intentedit = new Intent(DetailCustomerActivity.this, EditCustomerActivity.class);
-                bundle.putSerializable("customer",c);;
-                intentedit.putExtra("data", bundle);
-                startActivityForResult(intentedit,EDIT);
+                if (currentIndex >= 0 && currentIndex < customerList.size()) {
+                    Customer c = customerList.get(currentIndex);
+                    Bundle bundle = new Bundle();
+                    Intent intentedit = new Intent(DetailCustomerActivity.this, EditCustomerActivity.class);
+                    bundle.putSerializable("customer", c);
+                    intentedit.putExtra("data", bundle);
+                    startActivityForResult(intentedit, EDIT);
+                } else {
+                    Toast.makeText(DetailCustomerActivity.this, "Không có dữ liệu khách hàng!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btnDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Customer c = customerList.get(currentIndex);
-                Bundle bundle = new Bundle();
-                Intent intent = new Intent(DetailCustomerActivity.this, DetailCustomer_booking.class);
-                bundle.putSerializable("customer",c);;
-                intent.putExtra("data", bundle);
-                startActivity(intent);
+                if (currentIndex >= 0 && currentIndex < customerList.size()) {
+                    Customer c = customerList.get(currentIndex);
+                    Bundle bundle = new Bundle();
+                    Intent intent = new Intent(DetailCustomerActivity.this, DetailCustomer_booking.class);
+                    bundle.putSerializable("customer", c);
+                    intent.putExtra("data", bundle);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(DetailCustomerActivity.this, "Không có dữ liệu khách hàng!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

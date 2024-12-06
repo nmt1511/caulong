@@ -92,7 +92,7 @@ public class feedback extends AppCompatActivity {
 
     public ArrayList<Feedback> getAllFeedbacks() {
         ArrayList<Feedback> feedbackList = new ArrayList<>();
-        String selectQuery = "SELECT * FROM Feedback";
+        String selectQuery = "SELECT * FROM Feedback ORDER BY feedback_id DESC";
         DataDatSan helper = new DataDatSan(this);
         db = helper.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

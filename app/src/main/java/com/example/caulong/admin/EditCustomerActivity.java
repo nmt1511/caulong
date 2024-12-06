@@ -67,8 +67,8 @@ public class EditCustomerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_customer);
+        init();
         getData();
-
         helper = new DataDatSan(this);
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,18 +79,20 @@ public class EditCustomerActivity extends Activity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(saveCustomer()){
-//                    Intent intent = getIntent();
-//                    Bundle bundle = new Bundle();
-//                    Customer c = new Customer( id_customer, edtName.getText().toString(),edtEmail.getText().toString(),
-//                            edtAddress.getText().toString(), edtNumElectric.getText().toString(),user_typesList.get(posSpinner).getId(),
-//                            user_typesList.get(posSpinner).getType_name());
-//                    bundle.putSerializable("customer", c);
-//                    intent.putExtra("data", bundle);
-//                    setResult(CustomerDetail.SAVE_EDIT, intent);
-//                    Toast.makeText(getApplication(), "Cập nhật khách hàng thành công!!!", Toast.LENGTH_LONG).show();
-//                    finish();
-//                }
+                if(saveCustomer()){
+                    Intent intent = getIntent();
+                    Bundle bundle = new Bundle();
+                    String name = edtName.getText().toString().trim();
+                    String gender = rdNam.isChecked() ? "Nam" : "Nữ";
+                    String phone = edtPhone.getText().toString().trim();
+                    String email = edtEmail.getText().toString().trim();
+                    Customer c = new Customer( id_customer, name, gender, phone, email,user_id,avatar);
+                    bundle.putSerializable("customer", c);
+                    intent.putExtra("data", bundle);
+                    setResult(DetailCustomerActivity.SAVE_EDIT, intent);
+                    Toast.makeText(getApplication(), "Cập nhật khách hàng thành công!!!", Toast.LENGTH_LONG).show();
+                    finish();
+                }
             }
         });
     }
@@ -103,7 +105,6 @@ public class EditCustomerActivity extends Activity {
             values.put("email",edtEmail.getText().toString().trim());
             values.put("gender",rdNam.isChecked() ? "Nam" : "Nữ");
             values.put("user_id",user_id);
-            values.put("avatar",avatar);
             if(db.update("Customer",values,"customer_id = ?",new String[]{id_customer}) != -1)
                 return true;
         }catch (Exception e){

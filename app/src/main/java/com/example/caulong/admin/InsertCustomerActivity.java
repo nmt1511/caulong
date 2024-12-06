@@ -182,7 +182,6 @@ public class InsertCustomerActivity extends Activity {
             customerValues.put("phone_number", phone);
             customerValues.put("email", email);
             customerValues.put("user_id", userId);
-            customerValues.put("avatar", "");
             return (db.insert("Customer",null,customerValues));
         }catch (Exception e){
             Toast.makeText(getApplication(), "Lỗi "+ e.getMessage(), Toast.LENGTH_LONG).show();

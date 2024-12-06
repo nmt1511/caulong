@@ -27,14 +27,13 @@ public class Customer_List extends Activity {
     private RecyclerView recyclerView;
     private FloatingActionButton btnAdd;
     private ArrayList<Customer> customerList;
+    private ArrayList<Customer> allCustomers;
     public static CustomerAdapter adapter;
     private EditText edtFind_customer;
     SQLiteDatabase db;
     DataDatSan helper;
     public static final int OPEN_CUSTOMER = 113;
-    public static final int EDIT_CUSTOMER = 114;
     public static final int SAVE_CUSTOMER = 115;
-    public static final int SAVE_EDIT_CUSTOMER = 116;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +41,16 @@ public class Customer_List extends Activity {
         recyclerView = findViewById(R.id.d_rvCustomer);
         btnAdd = findViewById(R.id.btnAdd_Customer);
         edtFind_customer = findViewById(R.id.search_bar);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         helper = new DataDatSan(this);
-        customerList = getAllCustomer();
+        //Lấy toàn bộ danh sách khách hàng
+        allCustomers = getAllCustomer();
+        customerList = new ArrayList<>(allCustomers);
+
         adapter = new CustomerAdapter(customerList);
         recyclerView.setAdapter(adapter);
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,8 +85,8 @@ public class Customer_List extends Activity {
             if (resultCode == SAVE_CUSTOMER) {
                 Bundle bundle = data.getBundleExtra("data");
                 Customer customer = (Customer) bundle.getSerializable("customer");
-                customerList.add(customer);
-                adapter.notifyDataSetChanged();
+                allCustomers.add(customer); // Cập nhật vào danh sách gốc
+                filterCustomerlist(edtFind_customer.getText().toString()); // Cập nhật RecyclerView
             }
         }
     }
@@ -112,30 +116,15 @@ public class Customer_List extends Activity {
     }
     private void filterCustomerlist(String searchText){
         customerList.clear();
-        if(searchText.isEmpty()){
-            customerList = getAllCustomer();
-        }
-        else{
-            try {
-                Cursor cursor = db.rawQuery("SELECT * FROM Customer WHERE customer_name LIKE ? ",
-                        new String[]{"%" + searchText + "%"});
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    customerList.add( new Customer(
-                            cursor.getString(0),
-                            cursor.getString(1),
-                            cursor.getString(2),
-                            cursor.getString(3),
-                            cursor.getString(4),
-                            cursor.getInt(5),
-                            cursor.getString(6)
-                    ));
-                    cursor.moveToNext();
+        if (searchText.isEmpty()) {
+            customerList.addAll(allCustomers); // Hiển thị toàn bộ khách hàng nếu ô tìm kiếm trống
+        } else {
+            for (Customer customer : allCustomers) {
+                if (customer.getCustomer_name().toLowerCase().contains(searchText.toLowerCase())) {
+                    customerList.add(customer); // Thêm khách hàng phù hợp với điều kiện tìm kiếm
                 }
-                adapter.notifyDataSetChanged(); // Cập nhật danh sách trong ListView
-            } catch (Exception ex) {
-                Toast.makeText(getApplication(), "Lỗi: " + ex.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
+        adapter.notifyDataSetChanged();
     }
 }

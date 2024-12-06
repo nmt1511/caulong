@@ -20,7 +20,7 @@ import java.util.List;
 public class DataDatSan extends SQLiteOpenHelper {
     // Tên cơ sở dữ liệu và phiên bản
     private static final String DATABASE_NAME = "booking_management.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public DataDatSan(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
